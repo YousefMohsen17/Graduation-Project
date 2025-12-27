@@ -14,7 +14,7 @@ export default function HeroSection() {
             seamless experience.
           </p>
           <ButtonLink
-            to="/"
+            to="/sign-up"
             children="Begin Your Journey"
             variant="solid"
             className="py-2 px-5 h-[62px] w-fit"

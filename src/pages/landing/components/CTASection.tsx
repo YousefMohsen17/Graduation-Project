@@ -14,7 +14,7 @@ export default function CTASection() {
               platform
             </p>
             <ButtonLink
-              to="/"
+              to="/sign-up"
               variant="solid"
               children="Join Our Community"
               className="h-[62px] py-2 px-5"
