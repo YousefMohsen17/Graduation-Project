@@ -77,7 +77,13 @@ export default function SignupPage() {
             </label>
             <Input type="password" id="confirm-password" />
           </div>
-          <p className="relative before:content-[''] before:absolute before:right-full before:top-1/2 before:-translate-y-1/2 before:w-[60px] sm:before:w-[145px] before:h-0.5 before:-translate-x-3 before:bg-[#0A0E29]  after:content-[''] after:absolute after:left-full after:top-1/2 after:-translate-y-1/2 after:w-[60px] sm:after:w-[145px] after:h-0.5 after:translate-x-3 after:bg-[#0A0E29] text-center w-fit mx-auto mb-8 whitespace-nowrap">
+          <ButtonLink
+            to="/sign-in"
+            variant="solid"
+            className="py-4 px-5 h-14 w-full flex justify-center"
+            children="Sign Up"
+          />
+          <p className="relative mt-8 before:content-[''] before:absolute before:right-full before:top-1/2 before:-translate-y-1/2 before:w-[60px] sm:before:w-[145px] before:h-0.5 before:-translate-x-3 before:bg-[#0A0E29]  after:content-[''] after:absolute after:left-full after:top-1/2 after:-translate-y-1/2 after:w-[60px] sm:after:w-[145px] after:h-0.5 after:translate-x-3 after:bg-[#0A0E29] text-center w-fit mx-auto mb-8 whitespace-nowrap">
             Or connect with
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
