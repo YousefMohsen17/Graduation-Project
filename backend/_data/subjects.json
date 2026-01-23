@@ -1,0 +1,246 @@
+[
+    {
+        "_id": "5d713995b721c3bb38c1f5d0",
+        "name": "Mechanics 1",
+        "code": "MEC101V",
+        "description": "Comprehensive video lectures on Mechanics 1 covering statics, force systems, and equilibrium, presented by Dr. Waleed El-Saeed Al-Bashbishi.",
+        "department": "Preparatory",
+        "year": "Level 0",
+        "driveLink": "https://drive.google.com/drive/folders/12NSl4rA8Vwe-3RaHPAt5DbEvs84GGK0m",
+        "instructor": "Dr. Waleed El-Saeed Al-Bashbishi"
+    },
+    {
+        "name": "Algebra",
+        "code": "MTH101RV",
+        "description": "Video lectures covering fundamental algebraic structures, matrices, and determinants, presented by Dr. Reda Abd.",
+        "department": "Preparatory",
+        "year": "Level 0",
+        "driveLink": "https://www.youtube.com/playlist?list=PLrJHT0IaOOX3hk3-m5G5a_9hxp4aoJA-s",
+        "instructor": "Dr. Reda Abd"
+    },
+    {
+        "name": "Calculus",
+        "code": "MTH102RV",
+        "description": "In-depth video lessons on differential calculus, limits, and continuity, presented by Dr. Reda Abd.",
+        "department": "Preparatory",
+        "year": "Level 0",
+        "driveLink": "https://www.youtube.com/playlist?list=PLrJHT0IaOOX2F1aPDwPJtOkFT_oHmWRcn",
+        "instructor": "Dr. Reda Abd"
+    },
+    {
+        "name": "Physics 1",
+        "code": "PHY101MS",
+        "description": "Lecture slides for Physics 1 covering mechanics and properties of matter, prepared by Dr. Marwa.",
+        "department": "Preparatory",
+        "year": "Level 0",
+        "driveLink": "https://drive.google.com/drive/folders/1-r6IrmtEAyVrat5y6yuEISSO8FBf7YP4",
+        "instructor": "Dr. Marwa"
+    },
+    {
+        "name": "Language",
+        "code": "LNG101",
+        "description": "Study materials for the technical language course, focusing on terminology and reading comprehension.",
+        "department": "Preparatory",
+        "year": "Level 0",
+        "driveLink": "https://drive.google.com/drive/folders/1zgy2iG6VEOkp2f6XggSLh0WB5-FpGSIK",
+        "instructor": "Unknown Instructor"
+    },
+    {
+        "name": "Engineering Drawing",
+        "code": "DRW101",
+        "description": "Resources and exercises for Engineering Drawing, covering orthographic projection and isometric views.",
+        "department": "Preparatory",
+        "year": "Level 0",
+        "driveLink": "https://drive.google.com/drive/folders/16CnoBw2jlziC2v3zS3KqVVrKk5bPQ8Wv",
+        "instructor": "Unknown Instructor"
+    },
+    {
+        "name": "English 2",
+        "code": "ENG102",
+        "description": "Course materials for English 2, enhancing technical writing and communication skills.",
+        "department": "Preparatory",
+        "year": "Level 0",
+        "driveLink": "https://drive.google.com/drive/folders/1uGEKkzC3tKa5aP3dWiLnH0Z5qaRvMdsB",
+        "instructor": "Unknown Instructor"
+    },
+    {
+        "name": "Mathematics 2",
+        "code": "MTH103A",
+        "description": "Part 1 of Mathematics 2 course materials, covering advanced calculus and integration techniques.",
+        "department": "Preparatory",
+        "year": "Level 0",
+        "driveLink": "https://drive.google.com/drive/folders/1CQpblf69tDFDBMIwRqsXEYDBe85JuWTC",
+        "instructor": "Unknown Instructor"
+    },
+    {
+        "name": "General Science ",
+        "code": "SUB200X",
+        "description": "Various course materials and lectures provided by Dr. Ahmed Shaban covering fundamental scientific concepts.",
+        "department": "General",
+        "year": "Level 200",
+        "driveLink": "https://drive.google.com/drive/folders/1-JaHJ374BFxV-WC7hv_XhbeSSPmap4wH",
+        "instructor": "Dr. Ahmed Shaban"
+    },
+    {
+        "name": "Operating Systems",
+        "code": "OS301",
+        "description": "Study of operating system concepts including processes, memory management, and file systems. Taught by Dr. Asmaa Hamdy.",
+        "department": "Computer",
+        "year": "Level 300",
+        "driveLink": "https://drive.google.com/drive/folders/1mVEFXIqQlaXQtCU8yWg6edLhBO0WLQRr",
+        "instructor": "Dr. Asmaa Hamdy"
+    },
+    {
+        "name": "Digital Communication Systems",
+        "code": "DCOM301",
+        "description": "Fundamentals of digital communication systems, modulation techniques, and error detection. Taught by Dr. Hala.",
+        "department": "Communications",
+        "year": "Level 300",
+        "driveLink": "https://drive.google.com/drive/folders/1gt62eVELcnyltCLKdai3zCw65D7yVZZT",
+        "instructor": "Dr. Hala"
+    },
+    {
+        "name": "Microprocessor",
+        "code": "MIC301",
+        "description": "Introduction to microprocessor architecture, assembly language, and interfacing. Taught by Dr. Safan.",
+        "department": "Computer/Electrical",
+        "year": "Level 300",
+        "driveLink": "https://drive.google.com/drive/folders/15olCEX3vE_MOueqz7tgTA91YIJsw5gN-",
+        "instructor": "Dr. Safan"
+    },
+    {
+        "name": "Networks",
+        "code": "NET301",
+        "description": "Overview of computer networks, protocols, and architecture. Taught by Dr. Sabry.",
+        "department": "Computer/Communications",
+        "year": "Level 300",
+        "driveLink": "https://drive.google.com/drive/folders/1mcZLe745iidJ0KmPcCgdGSP7FYEzXKsk",
+        "instructor": "Dr. Sabry"
+    },
+    {
+        "name": "Waveguides and Antennas",
+        "code": "ANT301",
+        "description": "Analysis and design of electromagnetic waveguides and antenna systems. Taught by Dr. Mohamed Gamal.",
+        "department": "Communications",
+        "year": "Level 300",
+        "driveLink": "https://drive.google.com/drive/folders/1gyf_MRmctvedNjz_PmKce8BduOcQ-Xk_",
+        "instructor": "Dr. Mohamed Gamal"
+    },
+    {
+        "name": "Software Engineering",
+        "code": "SWE301",
+        "description": "Principles of software engineering, development life cycles, and project management. Taught by Dr. Sarah Ayad.",
+        "department": "Computer",
+        "year": "Level 300",
+        "driveLink": "https://drive.google.com/drive/folders/1mfG_oTqtl0-f8JhdWekUTUPyvXdBvCpt",
+        "instructor": "Dr. Sarah Ayad"
+    },
+    {
+        "name": "Electromagnetic Fields",
+        "code": "FLD301",
+        "description": "Study of static and time-varying electromagnetic fields and Maxwell's equations. Taught by Dr. Mohamed Gamal.",
+        "department": "Electrical/Communications",
+        "year": "Level 300",
+        "driveLink": "https://drive.google.com/drive/folders/1M7016VEPP2p6imjlAQmagaIs-oLbFJJx",
+        "instructor": "Dr. Mohamed Gamal"
+    },
+    {
+        "name": "Computer Graphics ",
+        "code": "GRPH301A",
+        "description": "Introduction to computer graphics algorithms and rendering techniques. Taught by Dr. Arwa.",
+        "department": "Computer",
+        "year": "Level 300",
+        "driveLink": "https://drive.google.com/drive/folders/1VSpSbDMwfGEjekRDjh-FYuV8SyWWAFfq",
+        "instructor": "Dr. Arwa"
+    },
+    {
+        "name": "Computer Graphics ",
+        "code": "GRPH301B",
+        "description": "Advanced topics in computer graphics and visualization. Taught by Dr. Samah.",
+        "department": "Computer",
+        "year": "Level 300",
+        "driveLink": "https://drive.google.com/drive/folders/1WVXjsjqWts_BbtdsOX6R614PvwnmyLIp",
+        "instructor": "Dr. Samah"
+    },
+    {
+        "name": "Distributed Systems",
+        "code": "DIST301",
+        "description": "Design and implementation of distributed software systems and algorithms. Taught by Dr. Nahla Bishri.",
+        "department": "Computer",
+        "year": "Level 300",
+        "driveLink": "https://drive.google.com/drive/folders/1p22wETvdlfhg6xTluA_Zrmd9bMwiBdLX",
+        "instructor": "Dr. Nahla Bishri"
+    },
+    {
+        "name": "Embedded Systems",
+        "code": "EMB301",
+        "description": "Design of embedded systems using microcontrollers and real-time operating systems. Taught by Dr. Mohamed Kamal.",
+        "department": "Computer/Electrical",
+        "year": "Level 300",
+        "driveLink": "https://drive.google.com/drive/folders/1BP9qGsx-tiPuaQVckrk11IYAEwLBNFxQ",
+        "instructor": "Dr. Mohamed Kamal"
+    },
+    {
+        "name": "Programming Techniques",
+        "code": "PROG301",
+        "description": "Advanced programming paradigms, algorithms, and problem-solving techniques. Taught by Dr. Noha.",
+        "department": "Computer",
+        "year": "Level 300",
+        "driveLink": "https://drive.google.com/drive/folders/1D1eSMZxdsiRm5zNptMjLoKWD2oqQbYOK",
+        "instructor": "Dr. Noha"
+    },
+    {
+        "name": "Mobile Computing",
+        "code": "MOB301",
+        "description": "Development of applications for mobile devices and wireless communication protocols. Taught by Dr. Eman.",
+        "department": "Computer",
+        "year": "Level 300",
+        "driveLink": "https://drive.google.com/drive/folders/16HklHmLNohjKUvEEPzptygogNTFSJQCO",
+        "instructor": "Dr. Eman"
+    },
+    {
+        "name": "Programmable Logic Controllers",
+        "code": "PLC301",
+        "description": "Industrial automation and control systems using Programmable Logic Controllers (PLC). Taught by Dr. Mohamed Moawad.",
+        "department": "Electrical",
+        "year": "Level 300",
+        "driveLink": "https://drive.google.com/drive/folders/1ByQJds4MfhAFTUoN5Bu871rgZBgKwKtu",
+        "instructor": "Dr. Mohamed Moawad"
+    },
+    {
+        "name": "Artificial Intelligence",
+        "code": "AI301",
+        "description": "Introduction to AI concepts, machine learning, and neural networks. Taught by Dr. Mohamed Kamal.",
+        "department": "Computer",
+        "year": "Level 300",
+        "driveLink": "https://drive.google.com/drive/folders/1L2315vMb3aM9uehxr_f6_EhHFfQXuYEV",
+        "instructor": "Dr. Mohamed Kamal"
+    },
+    {
+        "name": "Selected Topics (CS)",
+        "code": "TOP301",
+        "description": "Special topics in Computer Science covering emerging technologies and trends. Taught by Dr. Sarah Ayad.",
+        "department": "Computer",
+        "year": "Level 300",
+        "driveLink": "https://drive.google.com/drive/folders/1B6zOx8dzTQh2rkmgxYf5sPrXEeojMNDs",
+        "instructor": "Dr. Sarah Ayad"
+    },
+    {
+        "name": "Project Management",
+        "code": "PM301",
+        "description": "Fundamentals of project management, planning, scheduling, and risk analysis. Taught by Dr. Abdelmonem Fouda.",
+        "department": "General",
+        "year": "Level 300",
+        "driveLink": "https://drive.google.com/drive/folders/1aauOwxDMLEeRz0XwSJZWjWDM85rEvh1k",
+        "instructor": "Dr. Abdelmonem Fouda"
+    },
+    {
+        "name": "Marketing",
+        "code": "MKT301",
+        "description": "Principles of marketing, market research, and consumer behavior. Taught by Dr. Abdelaziz Ali Hassan.",
+        "department": "General",
+        "year": "Level 300",
+        "driveLink": "https://drive.google.com/drive/folders/1Q9sgmlRT5sS1Nw3OCsTN-8r8GxOVmbjU",
+        "instructor": "Dr. Abdelaziz Ali Hassan"
+    }
+]

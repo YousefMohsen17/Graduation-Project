@@ -1,0 +1,16 @@
+[
+    {
+        "title": "Introduction to Mechanics",
+        "description": "Basic concepts of mechanics and force systems.",
+        "videoUrl": "https://www.youtube.com/watch?v=example1",
+        "pdfUrl": "https://drive.google.com/file/d/example1",
+        "subject": "5d713995b721c3bb38c1f5d0"
+    },
+    {
+        "title": "Equilibrium of Particles",
+        "description": "Understanding equilibrium in 2D and 3D.",
+        "videoUrl": "https://www.youtube.com/watch?v=example2",
+        "pdfUrl": "https://drive.google.com/file/d/example2",
+        "subject": "5d713995b721c3bb38c1f5d0"
+    }
+]
