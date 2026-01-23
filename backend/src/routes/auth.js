@@ -1,6 +1,6 @@
 const express = require('express');
 const passport = require('passport');
-const { register, login, forgotPassword, resetPassword, getMe, updateDetails, updatePassword } = require('../controllers/auth');
+const { register, login, forgotPassword, resetPassword, getMe, updateDetails, updatePassword, logout } = require('../controllers/auth');
 const { socialLoginCallback } = require('../controllers/socialAuth');
 const { protect } = require('../middleware/auth');
 
@@ -8,6 +8,7 @@ const router = express.Router();
 
 router.post('/register', register);
 router.post('/login', login);
+router.post('/logout', logout);
 router.post('/forgotpassword', forgotPassword);
 router.put('/resetpassword/:resettoken', resetPassword);
 

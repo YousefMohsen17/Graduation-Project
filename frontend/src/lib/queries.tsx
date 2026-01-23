@@ -1,5 +1,5 @@
-import { getSubjects, getSubject, checkAuth } from "./api";
-import { useQuery } from "@tanstack/react-query";
+import { getSubjects, getSubject, checkAuth, logout } from "./api";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
 export function useSubjects() {
     return useQuery({ queryKey: ["subjects"], queryFn: getSubjects })
@@ -19,4 +19,15 @@ export function useAuth() {
         queryFn: checkAuth,
         retry: false,
     })
+}
+
+export function useLogout() {
+    const queryClient = useQueryClient();
+    return useMutation({
+        mutationFn: logout,
+        onSuccess: () => {
+            queryClient.setQueryData(["auth"], null);
+            queryClient.invalidateQueries({ queryKey: ["auth"] });
+        },
+    });
 }
