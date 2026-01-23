@@ -17,7 +17,7 @@ export default function Header() {
   return (
     <header className="relative z-50">
       <div className="container mx-auto p-4 flex justify-between items-center mb-10 lg:mb-[100px]">
-        <div className="flex items-center gap-2 cursor-pointer" onClick={() => console.log(user)}>
+        <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate('/')}>
           <h1 className="text-xl font-[Orbitron] font-semibold">Engipedia</h1>
           <img src={logo} alt="Fire Spirit" />
         </div>
