@@ -12,63 +12,79 @@ import Layout from "./components/Layout";
 import HomePage from "./pages/Home/HomePage";
 import CoursesPage from "./pages/courses/CoursesPage";
 import SubjectDetailsPage from "./pages/courses/SubjectDetailsPage";
+import ProtectedRoute from "./components/ProtectedRoute";
+import PublicRoute from "./components/PublicRoute";
 
 function App() {
 
   const router = createBrowserRouter([
     {
-
       element: <Layout />,
       children: [
         {
-          index: true,
-          element: (
-            <>
-              <LandingPage />
-            </>
-          ),
+          element: <PublicRoute />,
+          children: [
+            {
+              index: true,
+              element: (
+                <>
+                  <LandingPage />
+                </>
+              ),
+            },
+          ],
         },
         {
-          path: "/home",
-          element: (
-            <>
-              <HomePage />
-            </>
-          ),
-        },
-        {
-          path: "/courses",
-          element: (
-            <>
-              <CoursesPage />
-            </>
-          ),
-        },
-        {
-          path: "/courses/:id",
-          element: (
-            <>
-              <SubjectDetailsPage />
-            </>
-          ),
+          element: <ProtectedRoute />,
+          children: [
+            {
+              path: "/home",
+              element: (
+                <>
+                  <HomePage />
+                </>
+              ),
+            },
+            {
+              path: "/courses",
+              element: (
+                <>
+                  <CoursesPage />
+                </>
+              ),
+            },
+            {
+              path: "/courses/:id",
+              element: (
+                <>
+                  <SubjectDetailsPage />
+                </>
+              ),
+            },
+          ],
         },
       ],
     },
     {
-      path: "/sign-up",
-      element: (
-        <>
-          <SignupPage />
-        </>
-      ),
-    },
-    {
-      path: "/sign-in",
-      element: (
-        <>
-          <SigninPage />
-        </>
-      ),
+      element: <PublicRoute />,
+      children: [
+        {
+          path: "/sign-up",
+          element: (
+            <>
+              <SignupPage />
+            </>
+          ),
+        },
+        {
+          path: "/sign-in",
+          element: (
+            <>
+              <SigninPage />
+            </>
+          ),
+        },
+      ],
     },
   ]);
   const queryClient = new QueryClient()
