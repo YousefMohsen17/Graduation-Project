@@ -43,7 +43,7 @@ export async function checkAuth() {
         const response = await axiosInstance.get("/auth/me");
         return response.data;
     } catch (error) {
-        throw error;
+        return null
     }
 }
 
