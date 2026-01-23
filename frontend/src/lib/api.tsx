@@ -46,3 +46,11 @@ export async function checkAuth() {
         throw error;
     }
 }
+
+export async function logout() {
+    try {
+        await axiosInstance.post("/auth/logout");
+    } catch (error) {
+        throw error;
+    }
+}
