@@ -14,8 +14,23 @@ import CoursesPage from "./pages/courses/CoursesPage";
 import SubjectDetailsPage from "./pages/courses/SubjectDetailsPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
+import { useEffect } from "react";
 
 function App() {
+  const queryClient = new QueryClient()
+
+  useEffect(() => {
+    window.onpageshow = (event) => {
+      if (event.persisted) {
+        window.location.reload();
+      }
+    };
+  }, []);
+  useEffect(() => {
+    // Clear auth cache on mount
+    queryClient.setQueryData(["auth"], null);
+    queryClient.removeQueries(["auth"]);
+  }, [queryClient]);
 
   const router = createBrowserRouter([
     {
@@ -87,7 +102,6 @@ function App() {
       ],
     },
   ]);
-  const queryClient = new QueryClient()
 
   return (
     <QueryClientProvider client={queryClient}>

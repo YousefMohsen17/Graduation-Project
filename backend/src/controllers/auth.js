@@ -227,7 +227,7 @@ exports.updatePassword = async (req, res, next) => {
 // @access  Private
 exports.logout = async (req, res, next) => {
     res.cookie('token', 'none', {
-        expires: new Date(Date.now() + 10 * 1000),
+        expires: new Date(Date.now() + 500),
         httpOnly: true,
     });
 
