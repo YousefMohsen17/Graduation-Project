@@ -26,12 +26,22 @@ app.use(express.json());
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
-app.use(
-    cors({
-        origin: process.env.CLIENT_URL || "http://localhost:5173",
-        credentials: true,
-    })
-);
+const allowedOrigins = [
+    "http://localhost:5173",
+    process.env.CLIENT_URL // Vercel frontend
+];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    credentials: true
+}));
 
 app.use(helmet({
     crossOriginResourcePolicy: { policy: "cross-origin" }
