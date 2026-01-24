@@ -14,14 +14,33 @@ exports.getPosts = async (req, res) => {
     }
 };
 
+// @desc    Get posts by user
+// @route   GET /api/community/user/:id
+// @access  Private
+exports.getUserPosts = async (req, res) => {
+    try {
+        const posts = await Post.find({ user: req.params.id }).sort({ createdAt: -1 });
+        res.json({ success: true, count: posts.length, data: posts });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ success: false, error: 'Server Error' });
+    }
+};
+
 // @desc    Create a post
 // @route   POST /api/community
 // @access  Private
 exports.createPost = async (req, res) => {
     try {
+        console.log("Create Post Request Body:", req.body);
+        console.log("Create Post Request File:", req.file);
+
         const newPost = new Post({
             content: req.body.content,
-            user: req.user.id
+            user: req.user.id,
+            image: req.file
+                ? `${req.protocol}://${req.get("host")}/uploads/posts/${req.file.filename}`
+                : null,
         });
 
         const post = await newPost.save();
@@ -67,7 +86,6 @@ exports.commentOnPost = async (req, res) => {
             content: req.body.content, // Changed from text to content to match request usually, but let's check schema
             text: req.body.text,
             name: user.name,
-            avatar: user.avatar, // Assuming avatar might exist later, or undefined
             user: req.user.id
         };
 
@@ -78,6 +96,34 @@ exports.commentOnPost = async (req, res) => {
         res.json({ success: true, data: post.comments });
     } catch (err) {
         console.error(err.message);
+        res.status(500).json({ success: false, error: 'Server Error' });
+    }
+};
+
+// @desc    Delete a post
+// @route   DELETE /api/community/:id
+// @access  Private
+exports.deletePost = async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
+
+        if (!post) {
+            return res.status(404).json({ success: false, error: 'Post not found' });
+        }
+
+        // Check user
+        if (post.user.toString() !== req.user.id) {
+            return res.status(401).json({ success: false, error: 'User not authorized' });
+        }
+
+        await post.deleteOne();
+
+        res.json({ success: true, data: {} });
+    } catch (err) {
+        console.error(err.message);
+        if (err.kind === 'ObjectId') {
+            return res.status(404).json({ success: false, error: 'Post not found' });
+        }
         res.status(500).json({ success: false, error: 'Server Error' });
     }
 };

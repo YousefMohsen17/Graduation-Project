@@ -2,10 +2,12 @@ import { useParams } from "react-router";
 import { useSubject } from "../../lib/queries";
 import { Loader } from "lucide-react";
 import GlassButton from "../../components/GlassButton";
+import { useEnrollCourse } from "../../lib/queries";
 
 export default function SubjectDetailsPage() {
     const { id } = useParams<{ id: string }>();
     const { data, isLoading, error } = useSubject(id || "");
+    const { mutate } = useEnrollCourse();
 
     if (isLoading) {
         return (
@@ -65,7 +67,10 @@ export default function SubjectDetailsPage() {
                     <div className="flex gap-4">
                         {subject?.driveLink && (
                             <GlassButton
-                                onClick={() => window.open(subject.driveLink, "_blank")}
+                                onClick={() => {
+                                    window.open(subject.driveLink, "_blank")
+                                    mutate(subject._id)
+                                }}
                             >
                                 Access Drive/Resources
                             </GlassButton>

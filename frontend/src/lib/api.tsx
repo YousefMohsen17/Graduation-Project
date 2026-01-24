@@ -1,4 +1,4 @@
-import type { LoginFormData, SignupFormData } from "../types/types";
+import type { LoginFormData, PostData, SignupFormData } from "../types/types";
 import axiosInstance from "./axios.tsx";
 export async function createAccount(data: SignupFormData) {
     try {
@@ -50,6 +50,83 @@ export async function checkAuth() {
 export async function logout() {
     try {
         await axiosInstance.post("/auth/logout");
+    } catch (error) {
+        throw error;
+    }
+}
+
+export async function createPost(formData: FormData) {
+    try {
+        await axiosInstance.post("/community", formData, { headers: { "Content-Type": "multipart/form-data" } });
+    } catch (error) {
+        throw error;
+    }
+}
+export async function getPosts() {
+    try {
+        const response = await axiosInstance.get("/community");
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}
+
+export async function likePost(id: string) {
+    try {
+        const response = await axiosInstance.put(`/community/like/${id}`);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}
+
+export async function commentOnPost({ id, commentContent }: { id: string; commentContent: { text: string, name: string, user: string, content: string } }) {
+    try {
+        const response = await axiosInstance.post(`/community/comment/${id}`, commentContent);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}
+
+export async function deletePost(id: string) {
+    try {
+        const response = await axiosInstance.delete(`/community/${id}`);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}
+
+export async function getUserPosts(id: string) {
+    try {
+        const response = await axiosInstance.get(`/community/user/${id}`);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}
+export async function getEnrolledCourses() {
+    try {
+        const response = await axiosInstance.get(`/subjects/enrolled`);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}
+export async function enrollCourse(id: string) {
+    try {
+        const response = await axiosInstance.post(`/subjects/${id}/enroll`);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}
+
+export async function getStudentStats() {
+    try {
+        const response = await axiosInstance.get(`/student/stats`);
+        return response.data;
     } catch (error) {
         throw error;
     }

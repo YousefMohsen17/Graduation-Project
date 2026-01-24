@@ -36,13 +36,13 @@ export default function Header() {
                 <Link to="/courses">
                   <li className={`hover:text-[#0a0e29] transition-colors ${isActive('/courses')}`}>Courses</li>
                 </Link>
-                <Link to="/">
+                <Link to="/progress">
                   <li className={`hover:text-[#0a0e29] transition-colors ${isActive('/progress')}`}>Progress</li>
                 </Link>
-                <Link to="/">
+                <Link to="/community">
                   <li className={`hover:text-[#0a0e29] transition-colors ${isActive('/community')}`}>Community</li>
                 </Link>
-                <Link to="/">
+                <Link to="/about">
                   <li className={`hover:text-[#0a0e29] transition-colors ${isActive('/about')}`}>About</li>
                 </Link>
               </>
@@ -69,7 +69,7 @@ export default function Header() {
             </>
           )}
           {user && (
-            <div className="flex justify-between items-center font-medium  text-[#0a0e29]">
+            <div onClick={() => navigate('/community/user/' + user.data?._id)} className="flex justify-between items-center font-medium  text-[#0a0e29]">
               <div>
                 <CircleUserRound />
               </div>
@@ -77,12 +77,6 @@ export default function Header() {
 
                 <p className="font-bold">{user.data?.name}</p>
                 <p>{user.data?.email}</p>
-              </div>
-              <div className="ms-[10px]">
-                <Bell />
-              </div>
-              <div className="ms-[10px]">
-                <MessageCircle />
               </div>
               <div className="ms-[10px] cursor-pointer" onClick={() => setShowLogoutConfirm(true)} title="Log out">
                 <LogOut />
@@ -107,13 +101,37 @@ export default function Header() {
                 <ul className="flex flex-col gap-6 text-center text-lg">
                   {user ? (
                     <>
+                      <div className="flex flex-col items-center gap-2 mb-4 border-b border-[#0a0e29]/10 pb-4">
+                        <CircleUserRound size={48} />
+                        <div>
+                          <p className="font-bold">{user.data?.name}</p>
+                          <p className="text-sm opacity-70">{user.data?.email}</p>
+                        </div>
+                      </div>
                       <Link to="/home" onClick={() => setIsMenuOpen(false)}>
                         <li className={isActive('/home')}>Home</li>
                       </Link>
                       <Link to="/courses" onClick={() => setIsMenuOpen(false)}>
                         <li className={isActive('/courses')}>Courses</li>
                       </Link>
-                      {/* Add other mobile links if needed */}
+                      <Link to="/progress" onClick={() => setIsMenuOpen(false)}>
+                        <li className={isActive('/progress')}>Progress</li>
+                      </Link>
+                      <Link to="/community" onClick={() => setIsMenuOpen(false)}>
+                        <li className={isActive('/community')}>Community</li>
+                      </Link>
+                      <Link to="/about" onClick={() => setIsMenuOpen(false)}>
+                        <li className={isActive('/about')}>About</li>
+                      </Link>
+                      <button
+                        onClick={() => {
+                          setShowLogoutConfirm(true);
+                          setIsMenuOpen(false);
+                        }}
+                        className="text-red-600 font-medium flex items-center justify-center gap-2 mt-2"
+                      >
+                        <LogOut size={20} /> Logout
+                      </button>
                     </>
                   ) : (
                     <Link to="/" onClick={() => setIsMenuOpen(false)}>

@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: gradproject-backend
+    env: node
+    plan: free
+    repo: https://github.com/your-username/your-repo-name # You will need to update this
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node src/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CLIENT_URL
+        fromService:
+          type: web
+          name: gradproject-frontend
+          property: url
+      - key: MONGO_URI
+        sync: false # You must set this in Render dashboard
+      - key: JWT_SECRET
+        sync: false # You must set this in Render dashboard
+
+  - type: web
+    name: gradproject-frontend
+    env: static
+    plan: free
+    repo: https://github.com/your-username/your-repo-name # You will need to update this
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: gradproject-backend
+          property: url
