@@ -10,6 +10,10 @@ const PostSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please add some text content'],
     },
+    image: {
+        type: String,
+        required: false
+    },
     likes: [{
         user: {
             type: mongoose.Schema.ObjectId,
@@ -22,6 +26,7 @@ const PostSchema = new mongoose.Schema({
             ref: 'Student',
             required: true
         },
+
         text: {
             type: String,
             required: true

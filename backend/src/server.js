@@ -17,6 +17,10 @@ connectDB();
 
 const app = express();
 
+app.get('/', (req, res) => {
+    res.send('API is running...');
+});
+
 // Middleware
 app.use(express.json());
 const cookieParser = require('cookie-parser');
@@ -24,12 +28,14 @@ app.use(cookieParser());
 
 app.use(
     cors({
-        origin: "http://localhost:5173",
+        origin: process.env.CLIENT_URL || "http://localhost:5173",
         credentials: true,
     })
 );
 
-app.use(helmet());
+app.use(helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" }
+}));
 app.use(passport.initialize()); // Init passport middleware
 
 // Dev logging middleware
@@ -42,7 +48,12 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/lectures', require('./routes/lectures'));
 
 app.use('/api/subjects', require('./routes/subjects'));
+app.use('/api/subjects', require('./routes/subjects'));
 app.use('/api/community', require('./routes/community'));
+app.use('/api/student', require('./routes/student'));
+
+const path = require('path');
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 const PORT = process.env.PORT || 5000;
 

@@ -38,6 +38,41 @@ const StudentSchema = new mongoose.Schema({
         enum: ['student', 'admin'],
         default: 'student',
     },
+    enrolledCourses: [{
+        course: {
+            type: mongoose.Schema.ObjectId,
+            ref: 'Subject'
+        },
+        progress: {
+            type: Number,
+            default: 0
+        },
+        completed: {
+            type: Boolean,
+            default: false
+        },
+        enrolledAt: {
+            type: Date,
+            default: Date.now
+        }
+    }],
+    studyStats: {
+        streak: {
+            type: Number,
+            default: 0
+        },
+        lastStudyDate: {
+            type: Date
+        },
+        totalStudyMinutes: {
+            type: Number,
+            default: 0
+        },
+        dailyActivity: [{
+            date: String, // Format YYYY-MM-DD
+            minutes: Number
+        }]
+    },
     createdAt: {
         type: Date,
         default: Date.now,
@@ -47,9 +82,9 @@ const StudentSchema = new mongoose.Schema({
 });
 
 // Encrypt password using bcrypt
-StudentSchema.pre('save', async function (next) {
+StudentSchema.pre('save', async function () {
     if (!this.isModified('password')) {
-        next();
+        return;
     }
 
     if (this.password) {

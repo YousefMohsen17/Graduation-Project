@@ -15,6 +15,10 @@ import SubjectDetailsPage from "./pages/courses/SubjectDetailsPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
 import { useEffect } from "react";
+import CommunityPage from "./pages/community/CommunityPage";
+import UserActivity from "./pages/community/UserActivity";
+import AboutPage from "./pages/about/AboutPage";
+import ProgressPage from "./pages/progress/ProgressPage";
 
 function App() {
   const queryClient = new QueryClient()
@@ -26,11 +30,11 @@ function App() {
       }
     };
   }, []);
-  useEffect(() => {
-    // Clear auth cache on mount
-    queryClient.setQueryData(["auth"], null);
-    queryClient.removeQueries(["auth"]);
-  }, [queryClient]);
+  // useEffect(() => {
+  //   // Clear auth cache on mount
+  //   queryClient.setQueryData(["auth"], null);
+  //   queryClient.removeQueries(["auth"]);
+  // }, [queryClient]);
 
   const router = createBrowserRouter([
     {
@@ -73,6 +77,38 @@ function App() {
               element: (
                 <>
                   <SubjectDetailsPage />
+                </>
+              ),
+            },
+            {
+              path: "/community",
+              element: (
+                <>
+                  <CommunityPage />
+                </>
+              ),
+            },
+            {
+              path: "/community/user/:id",
+              element: (
+                <>
+                  <UserActivity />
+                </>
+              ),
+            },
+            {
+              path: "/about",
+              element: (
+                <>
+                  <AboutPage />
+                </>
+              ),
+            },
+            {
+              path: "/progress",
+              element: (
+                <>
+                  <ProgressPage />
                 </>
               ),
             },

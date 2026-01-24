@@ -208,27 +208,7 @@ export default function SignupForm() {
         type="submit"
       />
 
-      <p className="relative mt-8 before:content-[''] before:absolute before:right-full before:top-1/2 before:-translate-y-1/2 before:w-[60px] sm:before:w-[145px] before:h-0.5 before:-translate-x-3 before:bg-[#0A0E29]  after:content-[''] after:absolute after:left-full after:top-1/2 after:-translate-y-1/2 after:w-[60px] sm:after:w-[145px] after:h-0.5 after:translate-x-3 after:bg-[#0A0E29] text-center w-fit mx-auto mb-8 whitespace-nowrap">
-        Or connect with
-      </p>
-      <div className="flex flex-col sm:flex-row gap-6 justify-center">
-        <ButtonLink
-          to="/sign-up"
-          variant="solid"
-          className="py-3 px-5 h-[54px] w-full sm:w-auto justify-center"
-        >
-          <img src={googleLogo} alt="google logo" className="mr-2" />
-          Continue With Google
-        </ButtonLink>
-        <ButtonLink
-          to="/sign-up"
-          variant="solid"
-          className="py-3 px-5 h-[54px] w-full sm:w-auto justify-center"
-        >
-          <img src={facebookLogo} alt="facebook logo" className="mr-2" />
-          Continue With Facebook
-        </ButtonLink>
-      </div>
+
     </form >);
 }
 
