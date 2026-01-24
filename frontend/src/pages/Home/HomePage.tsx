@@ -1,13 +1,11 @@
-import { CircleUserRound, Clock } from "lucide-react";
+import { CircleUserRound } from "lucide-react";
 import subjectImage from "../../assets/subject-image.jpg"
 import { useAuth, useSubjects } from "../../lib/queries";
 import GlassButton from "../../components/GlassButton";
 import { SkeletonCard } from "../../components/Skeleton";
-import { useEnrolledCourses } from "../../lib/queries";
 export default function HomePage() {
-    const { data, isLoading, error, isPending } = useSubjects()
+    const { data, isLoading, error } = useSubjects()
     const { data: user } = useAuth()
-    const { data: enrolledCourses } = useEnrolledCourses()
     return (
         <div className="container mx-auto px-4">
 

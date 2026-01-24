@@ -2,7 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import logo from "../../../assets/logo.svg";
 import ButtonLink from "../../../components/ButtonLink";
 import { useState } from "react";
-import { Bell, CircleUserRound, Menu, MessageCircle, X, LogOut } from "lucide-react";
+import { CircleUserRound, Menu, X, LogOut } from "lucide-react";
 import { useAuth, useLogout } from "../../../lib/queries";
 
 export default function Header() {

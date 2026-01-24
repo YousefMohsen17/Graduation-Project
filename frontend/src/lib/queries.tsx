@@ -1,4 +1,3 @@
-import type { PostData } from "@/types/types";
 import { getSubjects, getSubject, checkAuth, logout, createPost, getPosts, likePost, commentOnPost, deletePost, getUserPosts, getEnrolledCourses, enrollCourse, getStudentStats } from "./api";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
