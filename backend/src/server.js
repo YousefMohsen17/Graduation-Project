@@ -26,15 +26,22 @@ const allowedOrigins = [
 // 2. MUST BE SECOND: CORS Configuration
 app.use(cors({
     origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
+        // Allow requests with no origin (like mobile apps, Postman, etc.)
+        if (!origin) {
+            return callback(null, true);
+        }
+
+        // Check if origin is in allowed list
+        if (allowedOrigins.includes(origin)) {
+            return callback(null, origin); // Return the specific origin, not true
         } else {
-            callback(new Error("CORS not allowed"));
+            return callback(new Error("Not allowed by CORS"));
         }
     },
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
+    exposedHeaders: ['Set-Cookie']
 }));
 
 
