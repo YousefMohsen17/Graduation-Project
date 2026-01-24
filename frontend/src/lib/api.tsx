@@ -1,4 +1,4 @@
-import type { LoginFormData, PostData, SignupFormData } from "../types/types";
+import type { LoginFormData, SignupFormData } from "../types/types";
 import axiosInstance from "./axios.tsx";
 export async function createAccount(data: SignupFormData) {
     try {

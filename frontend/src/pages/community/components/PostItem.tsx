@@ -1,5 +1,5 @@
-import { useState, useRef } from "react";
-import { CircleUserRound, Heart, MessageCircle, Share, Send, Trash2, X } from "lucide-react";
+import { useState } from "react";
+import { CircleUserRound, Heart, MessageCircle, Send, Trash2, X } from "lucide-react";
 import type { Post } from "@/types/types";
 import { useLikePost, useCommentPost, useDeletePost } from "@/lib/queries";
 import InputGlass from "../../../components/InputGlass";

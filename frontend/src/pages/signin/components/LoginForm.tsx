@@ -1,7 +1,5 @@
 import Input from "../../../components/Input";
 import ButtonLink from "../../../components/ButtonLink";
-import googleLogo from "../../../assets/google logo.svg";
-import facebookLogo from "../../../assets/facebook logo.svg";
 import { EyeOff, Eye, LoaderCircle } from "lucide-react";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";

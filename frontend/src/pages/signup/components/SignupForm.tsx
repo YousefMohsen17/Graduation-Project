@@ -1,5 +1,4 @@
-import googleLogo from "../../../assets/google logo.svg";
-import facebookLogo from "../../../assets/facebook logo.svg";
+
 import Input from "../../../components/Input";
 import ButtonLink from "../../../components/ButtonLink";
 import { Eye, EyeOff, LoaderCircle } from "lucide-react";

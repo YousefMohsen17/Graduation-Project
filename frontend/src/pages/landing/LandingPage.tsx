@@ -1,4 +1,3 @@
-import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import FeaturesSection from "./components/FeaturesSection";
 import TestimonialsSection from "./components/TestimonialsSection";
@@ -9,7 +8,7 @@ import { useLocation } from "react-router";
 import toast from "react-hot-toast";
 import { useAuth } from "../../hooks/useAuth";
 export default function LandingPage() {
-  const { data: user, isLoading, error } = useAuth();
+  const { data: user } = useAuth();
   console.log(user);
   const location = useLocation()
   const hasShownToast = useRef(false);
