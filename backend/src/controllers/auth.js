@@ -67,22 +67,22 @@ const sendTokenResponse = (user, statusCode, res) => {
         expiresIn: '30d',
     });
 
+
     const options = {
         expires: new Date(
             Date.now() + 30 * 24 * 60 * 60 * 1000
         ),
         httpOnly: true,
+        secure: process.env.NODE_ENV === 'production', // HTTPS only in production
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax' // 'none' for cross-domain
     };
-
-    if (process.env.NODE_ENV === 'production') {
-        options.secure = true;
-    }
 
     res
         .status(statusCode)
-        .cookie('token', token, options) // Optional: cookies
+        .cookie('token', token, options)
         .json({
             success: true,
+            token, // Also send token in response body for backup
             user: {
                 id: user._id,
                 name: user.name,
