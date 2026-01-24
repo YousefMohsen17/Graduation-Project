@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: gradproject-backend
+    name: engipedia-backend
     env: node
     plan: free
     repo: https://github.com/your-username/your-repo-name # You will need to update this
@@ -13,7 +13,7 @@ services:
       - key: CLIENT_URL
         fromService:
           type: web
-          name: gradproject-frontend
+          name: engipedia-frontend
           property: url
       - key: MONGO_URI
         sync: false # You must set this in Render dashboard
@@ -21,7 +21,7 @@ services:
         sync: false # You must set this in Render dashboard
 
   - type: web
-    name: gradproject-frontend
+    name: engipedia-frontend
     env: static
     plan: free
     repo: https://github.com/your-username/your-repo-name # You will need to update this
@@ -32,5 +32,5 @@ services:
       - key: VITE_API_URL
         fromService:
           type: web
-          name: gradproject-backend
+          name: engipedia-backend
           property: url
