@@ -16,6 +16,27 @@ require('./config/passport')(passport);
 connectDB();
 
 const app = express();
+// 1. MUST BE FIRST: Define Origins
+const allowedOrigins = [
+    "http://localhost:5173",
+    "https://graduation-project-9ic7.vercel.app",
+    process.env.CLIENT_URL
+].filter(Boolean);
+
+// 2. MUST BE SECOND: CORS Configuration
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("CORS not allowed"));
+        }
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 
 app.get('/', (req, res) => {
     res.send('API is running...');
@@ -26,28 +47,8 @@ app.use(express.json());
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
-const allowedOrigins = [
-    "http://localhost:5173",
-    "https://graduation-project-9ic7.vercel.app",
-    process.env.CLIENT_URL
-].filter(Boolean); // Remove undefined values
 
-const corsOptions = {
-    origin: function (origin, callback) {
-        // allow requests with no origin (like Postman or mobile)
-        if (!origin) return callback(null, true);
 
-        // Check if the origin is in your whitelist
-        if (allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error("CORS not allowed"));
-        }
-    },
-    credentials: true
-};
-
-app.use(cors(corsOptions));
 
 
 app.use(helmet({
