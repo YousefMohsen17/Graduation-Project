@@ -32,19 +32,23 @@ const allowedOrigins = [
     process.env.CLIENT_URL
 ].filter(Boolean); // Remove undefined values
 
-app.use(cors({
+const corsOptions = {
     origin: function (origin, callback) {
-        // Allow requests with no origin (like mobile apps or curl requests)
+        // allow requests with no origin (like Postman or mobile)
         if (!origin) return callback(null, true);
 
-        if (allowedOrigins.indexOf(origin) !== -1) {
+        // Check if the origin is in your whitelist
+        if (allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
-            callback(new Error("Not allowed by CORS"));
+            callback(new Error("CORS not allowed"));
         }
     },
     credentials: true
-}));
+};
+
+app.use(cors(corsOptions));
+
 
 app.use(helmet({
     crossOriginResourcePolicy: { policy: "cross-origin" }
