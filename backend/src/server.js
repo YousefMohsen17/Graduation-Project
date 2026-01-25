@@ -22,8 +22,8 @@ const app = express();
 // CORS Configuration - MUST BE FIRST
 const corsOptions = {
     origin: [
+        "https://graduation-project-9ic7.vercel.app",
         "http://localhost:5173",
-        "https://graduation-project-9ic7.vercel.app"
     ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
