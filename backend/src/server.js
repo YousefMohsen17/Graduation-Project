@@ -5,6 +5,8 @@ const helmet = require('helmet');
 const passport = require('passport');
 const connectDB = require('./config/db');
 const cors = require("cors");
+const path = require('path');
+const cookieParser = require('cookie-parser');
 
 // Load env vars
 dotenv.config();
@@ -16,51 +18,34 @@ require('./config/passport')(passport);
 connectDB();
 
 const app = express();
-// 1. MUST BE FIRST: Define Origins
-const allowedOrigins = [
-    "http://localhost:5173",
-    "https://graduation-project-9ic7.vercel.app",
-    process.env.CLIENT_URL
-].filter(Boolean);
 
-// 2. MUST BE SECOND: CORS Configuration
-app.use(cors({
-    origin: function (origin, callback) {
-        // Allow requests with no origin (like mobile apps, Postman, etc.)
-        if (!origin) {
-            return callback(null, true);
-        }
-
-        // Check if origin is in allowed list
-        if (allowedOrigins.includes(origin)) {
-            return callback(null, origin); // Return the specific origin, not true
-        } else {
-            return callback(new Error("Not allowed by CORS"));
-        }
-    },
+// CORS Configuration - MUST BE FIRST
+const corsOptions = {
+    origin: [
+        "http://localhost:5173",
+        "https://graduation-project-9ic7.vercel.app"
+    ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
-    exposedHeaders: ['Set-Cookie']
-}));
+    optionsSuccessStatus: 200
+};
 
+// Apply CORS
+app.use(cors(corsOptions));
 
-app.get('/', (req, res) => {
-    res.send('API is running...');
-});
+// Handle preflight requests explicitly
+app.options('*', cors(corsOptions));
 
-// Middleware
+// Body parser
 app.use(express.json());
-const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
-
-
-
-
+// Helmet config (after CORS)
 app.use(helmet({
     crossOriginResourcePolicy: { policy: "cross-origin" }
 }));
+
 app.use(passport.initialize());
 
 // Dev logging middleware
@@ -68,44 +53,30 @@ if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
 
+// Health check route
+app.get('/', (req, res) => {
+    res.send('API is running...');
+});
+
 // Mount routers
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/lectures', require('./routes/lectures'));
-
-app.use('/api/subjects', require('./routes/subjects'));
 app.use('/api/subjects', require('./routes/subjects'));
 app.use('/api/community', require('./routes/community'));
 app.use('/api/student', require('./routes/student'));
 
-const path = require('path');
+// Static files
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
-// Serve frontend in production
-if (process.env.NODE_ENV === 'production') {
-    // Serve static files from frontend build
-    app.use(express.static(path.join(__dirname, '../../frontend/dist')));
+// Start server
+const PORT = process.env.PORT || 5000;
 
-    // Handle React routing - return index.html for all non-API routes
-    app.get('/^\/.*$/', (req, res) => {
-        res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'));
-    });
-}
+const server = app.listen(PORT, () => {
+    console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+});
 
-// For Vercel serverless
-module.exports = app;
-
-// Only start server if not in serverless environment
-if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
-    const PORT = process.env.PORT || 5000;
-
-    const server = app.listen(
-        PORT,
-        console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
-    );
-
-    // Handle unhandled promise rejections
-    process.on('unhandledRejection', (err, promise) => {
-        console.log(`Error: ${err.message}`);
-        server.close(() => process.exit(1));
-    });
-}
+// Handle unhandled promise rejections
+process.on('unhandledRejection', (err, promise) => {
+    console.log(`Error: ${err.message}`);
+    server.close(() => process.exit(1));
+});
