@@ -43,7 +43,9 @@ app.use(cookieParser());
 
 // Helmet config (after CORS)
 app.use(helmet({
-    crossOriginResourcePolicy: { policy: "cross-origin" }
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+    contentSecurityPolicy: false, // disable CSP for testing
+    crossOriginEmbedderPolicy: false // disable COEP for testing
 }));
 
 app.use(passport.initialize());
