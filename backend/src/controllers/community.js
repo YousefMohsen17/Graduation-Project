@@ -6,7 +6,9 @@ const Student = require('../models/Student');
 // @access  Private
 exports.getPosts = async (req, res) => {
     try {
-        const posts = await Post.find().sort({ createdAt: -1 });
+        const posts = await Post.find()
+            .populate('user', 'name')
+            .sort({ createdAt: -1 });
         res.json({ success: true, count: posts.length, data: posts });
     } catch (err) {
         console.error(err.message);
@@ -19,7 +21,9 @@ exports.getPosts = async (req, res) => {
 // @access  Private
 exports.getUserPosts = async (req, res) => {
     try {
-        const posts = await Post.find({ user: req.params.id }).sort({ createdAt: -1 });
+        const posts = await Post.find({ user: req.params.id })
+            .populate('user', 'name')
+            .sort({ createdAt: -1 });
         res.json({ success: true, count: posts.length, data: posts });
     } catch (err) {
         console.error(err.message);
@@ -35,15 +39,20 @@ exports.createPost = async (req, res) => {
         console.log("Create Post Request Body:", req.body);
         console.log("Create Post Request File:", req.file);
 
+        const protocol = req.headers['x-forwarded-proto'] || req.protocol;
+        const host = req.get('host');
+        const imageUrl = req.file
+            ? `${protocol}://${host}/uploads/posts/${req.file.filename}`
+            : null;
+
         const newPost = new Post({
             content: req.body.content,
             user: req.user.id,
-            image: req.file
-                ? `${req.protocol}://${req.get("host")}/uploads/posts/${req.file.filename}`
-                : null,
+            image: imageUrl,
         });
 
-        const post = await newPost.save();
+        let post = await newPost.save();
+        post = await post.populate('user', 'name');
         res.json({ success: true, data: post });
     } catch (err) {
         console.error(err.message);
