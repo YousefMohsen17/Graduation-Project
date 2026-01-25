@@ -18,7 +18,7 @@ export default function PostItem({ post, currentUser }: PostItemProps) {
     const [showFullImage, setShowFullImage] = useState(false);
 
     const isLiked = post.likes.some((like) => like.user === currentUser?.data?._id);
-    const isOwner = post.user === currentUser?.data?._id;
+    const isOwner = post.user._id === currentUser?.data?._id;
 
     function handleLike() {
         likePost(post._id);
