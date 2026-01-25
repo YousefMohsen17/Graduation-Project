@@ -20,7 +20,10 @@ export interface PostData {
 }
 export interface Post {
     _id: string
-    user: string
+    user: {
+        name: string;
+        _id: string;
+    }
     content: string
     image?: string
     likes: Array<{

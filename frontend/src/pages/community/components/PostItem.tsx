@@ -49,7 +49,7 @@ export default function PostItem({ post, currentUser }: PostItemProps) {
                 <div className="flex items-center gap-5">
                     <CircleUserRound className="w-[48px] h-[48px]" />
                     <div className="flex flex-col">
-                        <span className="font-bold">{`${currentUser?.data?.name}`}</span>
+                        <span className="font-bold">{`${post.user.name}`}</span>
                         <span className="opacity-60">CCE Student</span>
                     </div>
                 </div>
@@ -69,7 +69,7 @@ export default function PostItem({ post, currentUser }: PostItemProps) {
                 <p className="mb-4">{post.content}</p>
                 {post.image && (
                     <img
-                        src={post.image.startsWith('http') ? post.image : `http://localhost:5000/uploads/posts/${post.image}`}
+                        src={post.image}
                         alt="Post content"
                         className="w-full max-h-[450px] object-cover rounded-[8px] cursor-pointer hover:opacity-95 transition-opacity"
                         onClick={() => setShowFullImage(true)}
@@ -147,7 +147,7 @@ export default function PostItem({ post, currentUser }: PostItemProps) {
                         <X size={32} />
                     </button>
                     <img
-                        src={post.image.startsWith('http') ? post.image : `http://localhost:5000/uploads/posts/${post.image}`}
+                        src={post.image}
                         alt="Full size"
                         className="max-w-full max-h-[90vh] object-contain"
                         onClick={(e) => e.stopPropagation()}

@@ -17,7 +17,15 @@ require('./config/passport')(passport);
 // Connect to database
 connectDB();
 
+// Ensure upload directory exists
+const fs = require('fs');
+const uploadDir = path.join(__dirname, '../uploads/posts');
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+}
+
 const app = express();
+app.set('trust proxy', 1); // Trust first proxy (Railway)
 
 // CORS Configuration - MUST BE FIRST
 const corsOptions = {
