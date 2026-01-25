@@ -19,36 +19,48 @@ connectDB();
 
 const app = express();
 
-// CORS - Simple configuration
-app.use(cors({
-    origin: "*", // Allow all origins since we're not using cookies
+// CORS Configuration - MUST BE FIRST
+const corsOptions = {
+    origin: [
+        "http://localhost:5173",
+        "https://graduation-project-9ic7.vercel.app"
+    ],
+    credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
+    allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
+    optionsSuccessStatus: 200
+};
+
+// Apply CORS
+app.use(cors(corsOptions));
+
+// Handle preflight requests explicitly
+app.options('/^\/.*$/', cors(corsOptions));
 
 // Body parser
 app.use(express.json());
 app.use(cookieParser());
 
-// Helmet config
+// Helmet config (after CORS)
 app.use(helmet({
-    crossOriginResourcePolicy: false,
-    contentSecurityPolicy: false
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+    contentSecurityPolicy: false, // disable CSP for testing
+    crossOriginEmbedderPolicy: false // disable COEP for testing
 }));
 
 app.use(passport.initialize());
 
-// Dev logging
+// Dev logging middleware
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
 
-// Health check
+// Health check route
 app.get('/', (req, res) => {
     res.send('API is running...');
 });
 
-// Routes
+// Mount routers
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/lectures', require('./routes/lectures'));
 app.use('/api/subjects', require('./routes/subjects'));
@@ -60,6 +72,13 @@ app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // Start server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+
+const server = app.listen(PORT, () => {
+    console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+});
+
+// Handle unhandled promise rejections
+process.on('unhandledRejection', (err, promise) => {
+    console.log(`Error: ${err.message}`);
+    server.close(() => process.exit(1));
 });
