@@ -68,14 +68,22 @@ const sendTokenResponse = (user, statusCode, res) => {
     });
 
 
+    const isProduction = process.env.NODE_ENV === 'production' || req.get('host').includes('railway') || req.get('host').includes('render') || req.get('host').includes('vercel');
+
     const options = {
         expires: new Date(
             Date.now() + 30 * 24 * 60 * 60 * 1000
         ),
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production', // HTTPS only in production
-        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax' // 'none' for cross-domain
+        secure: true, // Modern browsers require secure for sameSite: 'none'
+        sameSite: 'none'
     };
+
+    // If on localhost without HTTPS, we might need lax (but Vercel requires none)
+    if (req.get('host').includes('localhost')) {
+        options.secure = false;
+        options.sameSite = 'lax';
+    }
 
     res
         .status(statusCode)
@@ -226,10 +234,19 @@ exports.updatePassword = async (req, res, next) => {
 // @route   GET /api/auth/logout
 // @access  Private
 exports.logout = async (req, res, next) => {
-    res.cookie('token', 'none', {
-        expires: new Date(Date.now() + 500),
+    const options = {
+        expires: new Date(0),
         httpOnly: true,
-    });
+        secure: true,
+        sameSite: 'none'
+    };
+
+    if (req.get('host').includes('localhost')) {
+        options.secure = false;
+        options.sameSite = 'lax';
+    }
+
+    res.cookie('token', '', options);
 
     res.status(200).json({
         success: true,
