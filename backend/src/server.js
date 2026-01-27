@@ -32,7 +32,8 @@ const corsOptions = {
     origin: [
         "https://graduation-project-p8w4.vercel.app",
         "http://localhost:5173",
-    ],
+        process.env.CLIENT_URL,
+    ].filter(Boolean),
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],

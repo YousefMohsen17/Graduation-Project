@@ -60,8 +60,15 @@ exports.login = async (req, res) => {
     }
 };
 
-// Get token from model, create cookie and send response
 const sendTokenResponse = (user, statusCode, res) => {
+    // Check if JWT_SECRET is configured
+    if (!process.env.JWT_SECRET) {
+        return res.status(500).json({
+            success: false,
+            error: 'JWT_SECRET is not defined in environment variables'
+        });
+    }
+
     // Create token
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
         expiresIn: '30d',
