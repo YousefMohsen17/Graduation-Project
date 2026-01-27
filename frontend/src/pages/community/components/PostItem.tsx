@@ -42,7 +42,6 @@ export default function PostItem({ post, currentUser }: PostItemProps) {
         );
     }
 
-
     return (
         <div className="py-4 px-5 rounded-[8px] border border-white bg-[#EAEDFA] mb-[40px]">
             <div className="flex items-center mb-[24px] gap-5 justify-between">
@@ -121,7 +120,9 @@ export default function PostItem({ post, currentUser }: PostItemProps) {
                             <div key={comment._id} className="flex gap-3 bg-white/30 p-3 rounded-lg">
                                 <CircleUserRound className="w-8 h-8 flex-shrink-0 opacity-70" />
                                 <div>
-                                    <div className="font-semibold text-sm">User</div>
+                                    <div className="font-semibold text-sm">
+                                        {comment.user?.name || comment.name || "Anonymous"}
+                                    </div>
                                     <p className="text-sm opacity-90">{comment.text}</p>
                                 </div>
                             </div>

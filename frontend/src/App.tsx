@@ -1,24 +1,26 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-import LandingPage from "./pages/landing/LandingPage";
-import SignupPage from "./pages/signup/SignupPage";
-import SigninPage from "./pages/signin/SigninPage";
+import { lazy, Suspense, useEffect } from "react";
 import {
-
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
 import { Toaster } from "react-hot-toast";
 import Layout from "./components/Layout";
-import HomePage from "./pages/Home/HomePage";
-import CoursesPage from "./pages/courses/CoursesPage";
-import SubjectDetailsPage from "./pages/courses/SubjectDetailsPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
-import { useEffect } from "react";
-import CommunityPage from "./pages/community/CommunityPage";
-import UserActivity from "./pages/community/UserActivity";
-import AboutPage from "./pages/about/AboutPage";
-import ProgressPage from "./pages/progress/ProgressPage";
+import LoadingPage from "./components/LoadingPage";
+
+// Lazy load all pages
+const LandingPage = lazy(() => import("./pages/landing/LandingPage"));
+const SignupPage = lazy(() => import("./pages/signup/SignupPage"));
+const SigninPage = lazy(() => import("./pages/signin/SigninPage"));
+const HomePage = lazy(() => import("./pages/Home/HomePage"));
+const CoursesPage = lazy(() => import("./pages/courses/CoursesPage"));
+const SubjectDetailsPage = lazy(() => import("./pages/courses/SubjectDetailsPage"));
+const CommunityPage = lazy(() => import("./pages/community/CommunityPage"));
+const UserActivity = lazy(() => import("./pages/community/UserActivity"));
+const AboutPage = lazy(() => import("./pages/about/AboutPage"));
+const ProgressPage = lazy(() => import("./pages/progress/ProgressPage"));
 
 function App() {
   const queryClient = new QueryClient()
@@ -30,11 +32,6 @@ function App() {
       }
     };
   }, []);
-  // useEffect(() => {
-  //   // Clear auth cache on mount
-  //   queryClient.setQueryData(["auth"], null);
-  //   queryClient.removeQueries(["auth"]);
-  // }, [queryClient]);
 
   const router = createBrowserRouter([
     {
@@ -45,11 +42,7 @@ function App() {
           children: [
             {
               index: true,
-              element: (
-                <>
-                  <LandingPage />
-                </>
-              ),
+              element: <LandingPage />,
             },
           ],
         },
@@ -58,59 +51,31 @@ function App() {
           children: [
             {
               path: "/home",
-              element: (
-                <>
-                  <HomePage />
-                </>
-              ),
+              element: <HomePage />,
             },
             {
               path: "/courses",
-              element: (
-                <>
-                  <CoursesPage />
-                </>
-              ),
+              element: <CoursesPage />,
             },
             {
               path: "/courses/:id",
-              element: (
-                <>
-                  <SubjectDetailsPage />
-                </>
-              ),
+              element: <SubjectDetailsPage />,
             },
             {
               path: "/community",
-              element: (
-                <>
-                  <CommunityPage />
-                </>
-              ),
+              element: <CommunityPage />,
             },
             {
               path: "/community/user/:id",
-              element: (
-                <>
-                  <UserActivity />
-                </>
-              ),
+              element: <UserActivity />,
             },
             {
               path: "/about",
-              element: (
-                <>
-                  <AboutPage />
-                </>
-              ),
+              element: <AboutPage />,
             },
             {
               path: "/progress",
-              element: (
-                <>
-                  <ProgressPage />
-                </>
-              ),
+              element: <ProgressPage />,
             },
           ],
         },
@@ -121,19 +86,11 @@ function App() {
       children: [
         {
           path: "/sign-up",
-          element: (
-            <>
-              <SignupPage />
-            </>
-          ),
+          element: <SignupPage />,
         },
         {
           path: "/sign-in",
-          element: (
-            <>
-              <SigninPage />
-            </>
-          ),
+          element: <SigninPage />,
         },
       ],
     },
@@ -142,7 +99,9 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Toaster />
-      <RouterProvider router={router}></RouterProvider>
+      <Suspense fallback={<LoadingPage />}>
+        <RouterProvider router={router} />
+      </Suspense>
     </QueryClientProvider>
   );
 }
