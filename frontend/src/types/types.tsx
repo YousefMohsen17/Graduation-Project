@@ -31,19 +31,40 @@ export interface Post {
         _id: string
     }>
     comments: Array<{
-        user: string
-        _id: string
-        text: string
-        content: string
-        name?: string
-        avatar?: string
+        user: {
+            _id: string;
+            name: string;
+        };
+        _id: string;
+        text: string;
+        content: string;
+        name?: string;
+        avatar?: string;
     }>
     createdAt: string
     __v: number
 }
 
-export type PostResponse = {
+export interface PostResponse {
     success: boolean
     count: number
     data: Array<Post>
+}
+export interface Subject {
+    _id: string
+    name: string
+    code: string
+    description: string
+    department: string
+    year: string
+    driveLink: string
+    instructor: string
+    createdAt: string
+    __v: number
+}
+
+export interface SubjectsResponse {
+    success: boolean
+    count: number
+    data: Subject[]
 }
