@@ -20,7 +20,7 @@ exports.register = async (req, res) => {
             universityId
         });
 
-        sendTokenResponse(user, 200, res);
+        sendTokenResponse(user, 200, res, req);
     } catch (err) {
         console.error(err);
         res.status(400).json({ success: false, error: err.message });
@@ -53,14 +53,14 @@ exports.login = async (req, res) => {
             return res.status(401).json({ success: false, error: 'Invalid credentials' });
         }
 
-        sendTokenResponse(user, 200, res);
+        sendTokenResponse(user, 200, res, req);
     } catch (err) {
         console.error(err);
         res.status(400).json({ success: false, error: err.message });
     }
 };
 
-const sendTokenResponse = (user, statusCode, res) => {
+const sendTokenResponse = (user, statusCode, res, req) => {
     // Check if JWT_SECRET is configured
     if (!process.env.JWT_SECRET) {
         return res.status(500).json({
@@ -172,7 +172,7 @@ exports.resetPassword = async (req, res, next) => {
 
     await user.save();
 
-    sendTokenResponse(user, 200, res);
+    sendTokenResponse(user, 200, res, req);
 };
 
 // @desc    Get current logged in user
@@ -234,7 +234,7 @@ exports.updatePassword = async (req, res, next) => {
     user.password = newPassword;
     await user.save();
 
-    sendTokenResponse(user, 200, res);
+    sendTokenResponse(user, 200, res, req);
 };
 
 // @desc    Log user out / clear cookie
