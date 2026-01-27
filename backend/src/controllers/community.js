@@ -8,6 +8,7 @@ exports.getPosts = async (req, res) => {
     try {
         const posts = await Post.find()
             .populate('user', 'name')
+            .populate('comments.user', 'name')
             .sort({ createdAt: -1 });
         res.json({ success: true, count: posts.length, data: posts });
     } catch (err) {
@@ -23,6 +24,7 @@ exports.getUserPosts = async (req, res) => {
     try {
         const posts = await Post.find({ user: req.params.id })
             .populate('user', 'name')
+            .populate('comments.user', 'name')
             .sort({ createdAt: -1 });
         res.json({ success: true, count: posts.length, data: posts });
     } catch (err) {
@@ -51,8 +53,7 @@ exports.createPost = async (req, res) => {
             image: imageUrl,
         });
 
-        let post = await newPost.save();
-        post = await post.populate('user', 'name');
+        const post = await newPost.save();
         res.json({ success: true, data: post });
     } catch (err) {
         console.error(err.message);

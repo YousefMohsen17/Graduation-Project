@@ -1,12 +1,12 @@
 import { Navigate, Outlet } from "react-router";
 import { useAuth } from "../lib/queries";
+import LoadingPage from "./LoadingPage";
 
 const ProtectedRoute = () => {
-    const { data: user, isLoading } = useAuth();
+    const { data: user, isLoading, isFetching } = useAuth();
 
-    if (isLoading) {
-        // You can replace this with a proper loading spinner component
-        return <div className="flex justify-center items-center h-screen">Loading...</div>;
+    if (isLoading || (isFetching && !user)) {
+        return <LoadingPage />;
     }
 
     if (user) {

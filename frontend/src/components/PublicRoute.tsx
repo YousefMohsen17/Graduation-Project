@@ -1,12 +1,12 @@
 import { Navigate, Outlet } from "react-router";
 import { useAuth } from "../lib/queries";
-import { Loader } from "lucide-react";
+import LoadingPage from "./LoadingPage";
 
 const PublicRoute = () => {
-    const { data: user, isLoading } = useAuth();
+    const { data: user, isLoading, isFetching } = useAuth();
 
-    if (isLoading) {
-        return <div className="flex justify-center items-center h-screen"><Loader /></div>;
+    if (isLoading || (isFetching && !user)) {
+        return <LoadingPage />;
     }
 
     if (user) {
