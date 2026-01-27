@@ -69,8 +69,8 @@ export default function Header() {
             </>
           )}
           {user && (
-            <div onClick={() => navigate('/community/user/' + user.data?._id)} className="flex justify-between items-center font-medium  text-[#0a0e29]">
-              <div>
+            <div className="flex justify-between items-center font-medium  text-[#0a0e29]">
+              <div onClick={() => navigate('/community/user/' + user.data?._id)} >
                 <CircleUserRound />
               </div>
               <div className="ms-[15px] me-[24px]">

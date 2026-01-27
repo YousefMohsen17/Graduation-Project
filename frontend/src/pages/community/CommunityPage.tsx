@@ -26,7 +26,7 @@ export default function CommunityPage() {
 
     const { data: user } = useAuth()
     const { mutate, isPending } = usePost()
-    const { data: posts } = usePosts()
+    const { data: posts, isLoading } = usePosts()
     // function handlePost() {
     //     if (!postValue.trim() && !selectedImage) return;
 
@@ -104,7 +104,7 @@ export default function CommunityPage() {
                 </div>
             </div>
             <div>
-
+                {isLoading && <div className="text-center">Loading...</div>}
                 {posts?.data?.map((post: Post) => (
                     <PostItem key={post._id} post={post} currentUser={user} />
                 ))}

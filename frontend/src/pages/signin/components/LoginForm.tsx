@@ -2,7 +2,7 @@ import Input from "../../../components/Input";
 import ButtonLink from "../../../components/ButtonLink";
 import { EyeOff, Eye, LoaderCircle } from "lucide-react";
 import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router";
 import { toast } from "react-hot-toast";
 import { login } from "../../../lib/api";
@@ -22,10 +22,13 @@ export default function LoginForm() {
     };
     const [showPassword, setShowPassword] = useState(false)
 
+    const queryClient = useQueryClient();
     const { mutate, isPending } = useMutation({
         mutationFn: (data: LoginFormData) => login(data),
-        onSuccess: () => {
+        onSuccess: (data) => {
+            queryClient.setQueryData(["auth"], data.user || data);
             navigate("/home", {
+                replace: true,
                 state: {
                     showSuccessToast: true,
                 }
