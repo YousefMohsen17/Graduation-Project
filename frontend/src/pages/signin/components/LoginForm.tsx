@@ -23,7 +23,7 @@ export default function LoginForm() {
     const [showPassword, setShowPassword] = useState(false)
 
     const queryClient = useQueryClient();
-    const { mutate, isPending } = useMutation({
+    const { mutate, isPending ,isError} = useMutation({
         mutationFn: (data: LoginFormData) => login(data),
         onSuccess: (data) => {
             queryClient.setQueryData(["auth"], data.user || data);
@@ -53,6 +53,7 @@ export default function LoginForm() {
             <div className="mb-4">
                 <label htmlFor="email">Email</label>
                 <Input type="email" id="email" value={formData.email}
+                error={isError ? "Invalid email" : ""}
                     onChange={handleChange} />
             </div>
             <div className="mb-8">
@@ -68,6 +69,7 @@ export default function LoginForm() {
                     </span>
                 </label>
                 <Input type={showPassword ? "text" : "password"} id="password" value={formData.password}
+                    error={isError ? "Invalid Password" : ""}
                     onChange={handleChange} />
             </div>
 
