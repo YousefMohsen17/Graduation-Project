@@ -98,7 +98,7 @@ export default function LoginForm() {
         disabled={isPending}
       />
 
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 mt-5">
         <button
           type="button"
           onClick={loginWithGoogle}
