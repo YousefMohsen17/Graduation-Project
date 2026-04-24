@@ -3,8 +3,6 @@ import {
   getAuth,
   GoogleAuthProvider,
   FacebookAuthProvider,
-  signInWithRedirect, // add
-  getRedirectResult,
 } from "firebase/auth";
 
 const firebaseConfig = {
