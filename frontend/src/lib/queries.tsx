@@ -12,6 +12,7 @@ import {
   getEnrolledCourses,
   enrollCourse,
   getStudentStats,
+  updateCourseProgress,
 } from "./api";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
@@ -58,8 +59,12 @@ export function usePost() {
       toast.success("Post created successfully");
       queryClient.invalidateQueries({ queryKey: ["posts"] });
     },
-    onError: (error: any) => {
-      toast.error(error.response?.data.error || "Something went wrong");
+    onError: (error) => {
+      if (error instanceof Error) {
+        toast.error(error.message || "Something went wrong");
+      } else {
+        toast.error("Something went wrong");
+      }
     },
   });
 }
@@ -97,8 +102,12 @@ export function useLikePost() {
       toast.success("You Liked A Post");
       queryClient.invalidateQueries({ queryKey: ["posts"] });
     },
-    onError: (error: any) => {
-      toast.error(error.response?.data.error || "Something went wrong");
+    onError: (error) => {
+      if (error instanceof Error) {
+        toast.error(error.message || "Something went wrong");
+      } else {
+        toast.error("Something went wrong");
+      }
     },
   });
 }
@@ -111,8 +120,29 @@ export function useCommentPost() {
       toast.success("Comment added successfully");
       queryClient.invalidateQueries({ queryKey: ["posts"] });
     },
-    onError: (error: any) => {
-      toast.error(error.response?.data.error || "Something went wrong");
+    onError: (error) => {
+      if (error instanceof Error) {
+        toast.error(error.message || "Something went wrong");
+      } else {
+        toast.error("Something went wrong");
+      }
+    },
+  });
+}
+export function useCourseProgress() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: updateCourseProgress,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["studentStats"] });
+      toast.success("Course Completed");
+    },
+    onError: (error) => {
+      if (error instanceof Error) {
+        toast.error(error.message || "Something went wrong");
+      } else {
+        toast.error("Something went wrong");
+      }
     },
   });
 }
@@ -125,8 +155,12 @@ export function useDeletePost() {
       toast.success("Post deleted successfully");
       queryClient.invalidateQueries({ queryKey: ["posts"] });
     },
-    onError: (error: any) => {
-      toast.error(error.response?.data.error || "Something went wrong");
+    onError: (error) => {
+      if (error instanceof Error) {
+        toast.error(error.message || "Something went wrong");
+      } else {
+        toast.error("Something went wrong");
+      }
     },
   });
 }

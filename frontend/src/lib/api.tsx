@@ -173,3 +173,24 @@ export const socialLogin = async (firebaseToken: string) => {
   });
   return res.data;
 };
+export async function logStudyTime(minutes: number) {
+  try {
+    const response = await axiosInstance.post("/student/log-time", { minutes });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+export async function updateCourseProgress({
+  courseId,
+  progress,
+}: {
+  courseId: string;
+  progress: number;
+}) {
+  const res = await axiosInstance.put(`/student/course/${courseId}/progress`, {
+    progress,
+  });
+  return res.data;
+}
