@@ -1,14 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { lazy, Suspense, useEffect } from "react";
-import {
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query'
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
 import LoadingPage from "./components/LoadingPage";
+import StudyTimerProvider from "./providers/studyTimerProvider";
 
 // Lazy load all pages
 const LandingPage = lazy(() => import("./pages/landing/LandingPage"));
@@ -16,14 +14,16 @@ const SignupPage = lazy(() => import("./pages/signup/SignupPage"));
 const SigninPage = lazy(() => import("./pages/signin/SigninPage"));
 const HomePage = lazy(() => import("./pages/Home/HomePage"));
 const CoursesPage = lazy(() => import("./pages/courses/CoursesPage"));
-const SubjectDetailsPage = lazy(() => import("./pages/courses/SubjectDetailsPage"));
+const SubjectDetailsPage = lazy(
+  () => import("./pages/courses/SubjectDetailsPage"),
+);
 const CommunityPage = lazy(() => import("./pages/community/CommunityPage"));
 const UserActivity = lazy(() => import("./pages/community/UserActivity"));
 const AboutPage = lazy(() => import("./pages/about/AboutPage"));
 const ProgressPage = lazy(() => import("./pages/progress/ProgressPage"));
 
 function App() {
-  const queryClient = new QueryClient()
+  const queryClient = new QueryClient();
 
   useEffect(() => {
     window.onpageshow = (event) => {
@@ -98,6 +98,7 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <StudyTimerProvider />
       <Toaster />
       <Suspense fallback={<LoadingPage />}>
         <RouterProvider router={router} />
