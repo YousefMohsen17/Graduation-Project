@@ -1,6 +1,7 @@
 import { Navigate, Outlet } from "react-router";
 import { useAuth } from "../lib/queries";
 import LoadingPage from "./LoadingPage";
+import AchievementToastListener from "./AchievementToastListener";
 
 const ProtectedRoute = () => {
     const { data: user, isLoading, isFetching } = useAuth();
@@ -10,7 +11,12 @@ const ProtectedRoute = () => {
     }
 
     if (user) {
-        return <Outlet />;
+        return (
+            <>
+                <AchievementToastListener />
+                <Outlet />
+            </>
+        );
     }
 
     return <Navigate to="/sign-in" replace />;
