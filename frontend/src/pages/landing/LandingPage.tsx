@@ -2,6 +2,7 @@ import HeroSection from "./components/HeroSection";
 import FeaturesSection from "./components/FeaturesSection";
 import TestimonialsSection from "./components/TestimonialsSection";
 import CourseCategoriesSection from "./components/CourseCategoriesSection";
+import AiSection from "./components/AiSection";
 import CTASection from "./components/CTASection";
 import { useEffect, useRef } from "react";
 import { useLocation } from "react-router";
@@ -24,9 +25,10 @@ export default function LandingPage() {
   return (
     <>
       <HeroSection />
-      <FeaturesSection />
-      <TestimonialsSection />
+      <FeaturesSection /> 
       <CourseCategoriesSection />
+      <AiSection />
+      <TestimonialsSection />
       <CTASection />
     </>
   );

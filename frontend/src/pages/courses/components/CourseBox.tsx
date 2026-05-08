@@ -1,4 +1,5 @@
 import type { Subject } from "@/types/types";
+import ButtonLink from "../../../components/ButtonLink";
 
 export default function CourseBox({
   subject,
@@ -15,23 +16,20 @@ export default function CourseBox({
       <div>
         <h3 className="font-bold text-lg mb-1">{subject.name}</h3>
         <p className="text-slate-600 text-sm mb-1">{subject.instructor}</p>
-        <p className="text-slate-500 text-xs mb-4">{subject.year}</p>
+        <p className="text-slate-500 text-xs mb-1">{subject.year}</p>
+        <p className="text-slate-500 text-xs mb-4">{subject.lec}lec</p>
       </div>
-      <button
-        onClick={() => navigate(`/courses/${subject._id}`)}
-        className="
-                                    w-full mt-2 h-[44px] 
-                                    flex items-center justify-center
-                                    rounded-[16px]
-                                    bg-linear-to-b from-[#d0d5f3] to-[#ced2f2]
-                                    backdrop-blur-2xl
-                                    shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]
-                                    text-slate-800 font-medium transition-all active:scale-95
-                                    border border-white hover:brightness-105
-                                "
-      >
-        CONTINUE
-      </button>
+
+
+
+
+      <ButtonLink
+                                              to="/sign-up"
+                                              children="Continue"
+                                              variant="solid"
+                                              className="py-2 px-5 h-[35px] w-fill mt-2 group-hover:from-[#141C52] group-hover:to-[#5B6CD7]"
+                                              onClick={() => navigate(`/courses/${subject._id}`)}
+                                            />
     </div>
   );
 }
