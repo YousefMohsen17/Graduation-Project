@@ -175,3 +175,7 @@ h4 {
     @apply bg-background text-foreground;
   }
 }
+:hover{
+  transition-duration: .05s;
+  
+}
