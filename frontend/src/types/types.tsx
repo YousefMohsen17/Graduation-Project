@@ -61,6 +61,7 @@ export interface Subject {
   instructor: string;
   createdAt: string;
   __v: number;
+  
 }
 
 export interface SubjectsResponse {

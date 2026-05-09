@@ -19,7 +19,6 @@ const SubjectDetailsPage = lazy(
 );
 const CommunityPage = lazy(() => import("./pages/community/CommunityPage"));
 const UserActivity = lazy(() => import("./pages/community/UserActivity"));
-const AboutPage = lazy(() => import("./pages/about/AboutPage"));
 const ProgressPage = lazy(() => import("./pages/progress/ProgressPage"));
 
 function App() {
@@ -68,10 +67,6 @@ function App() {
             {
               path: "/community/user/:id",
               element: <UserActivity />,
-            },
-            {
-              path: "/about",
-              element: <AboutPage />,
             },
             {
               path: "/progress",
