@@ -2,7 +2,7 @@ import { GraduationCap } from 'lucide-react';
 
 export default function WelcomeMessage() { 
     return (
-<div className="p-4 ml-15">
+<div className="p-4 ml-15 ms:ml-0 ms:p-0">
   <div className="flex items-start gap-3 mb-2">
     <GraduationCap className="mb-4" size={25} color="#1349EC" />
     <div>
