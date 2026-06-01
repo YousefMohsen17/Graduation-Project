@@ -7,6 +7,7 @@ import FilterContainer from "./components/FilterContainer";
 import type { Subject } from "@/types/types";
 import SearchContainer from "./components/SearchContainer";
 import CourseBox from "./components/CourseBox";
+import ContinueLearningCard from "./components/ContinueLearningCard";
 
 
 export default function CoursesPage() {
@@ -27,9 +28,13 @@ export default function CoursesPage() {
     return (
         <div>
             <WelcomeMessage />
+
             <div className="container mx-auto px-4">
                 <SearchContainer searchTerm={searchTerm} handleSearch={handleSearch} />
                 <FilterContainer selectedLevel={selectedLevel} setSelectedLevel={setSelectedLevel} />
+                <div className="container mx-auto px-4 py-10">
+                <ContinueLearningCard navigate={navigate} course={data?.data?.[0]} />
+                </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-[18px] gap-y-[53px] ">
                     {filteredSubjects?.map((subject: Subject) => (
                         <CourseBox key={subject._id} subject={subject} navigate={navigate} />

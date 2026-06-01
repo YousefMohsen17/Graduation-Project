@@ -83,13 +83,15 @@ export default function Header() {
                 to="/sign-up"
                 children="Sign Up"
                 variant="solid"
-                className="py-6 px-4 h-[54px]"
+                className="py-6 px-4 h-[54px] bg-gradient-to-t from-[#0A0E29] to-[#1E2A7B] text-[#fafafa] 
+                                    hover:from-[#141C52] hover:to-[#5B6CD7]"
               />
               <ButtonLink
                 to="/sign-in"
                 children="Sign In"
                 variant="outline"
-                className="py-6 px-4 h-[54px]"
+                className="py-6 px-4 h-[54px] border-[2px] border-[#1E2A7B] text-[#1E2A7B] 
+                 hover:from-[#0A0E29] text-[#5B6CD7] hover:[#1E2A7B]"
               />
             </>
           )}
@@ -175,13 +177,15 @@ export default function Header() {
                   to="/sign-up"
                   children="Sign Up"
                   variant="solid"
-                  className="py-4 px-4 h-[50px] w-full justify-center"
+                  className="py-4 px-4 h-[50px] w-full justify-center bg-gradient-to-t from-[#0A0E29] to-[#1E2A7B] text-[#fafafa] 
+                                    hover:from-[#141C52] hover:to-[#5B6CD7]"
                 />
                 <ButtonLink
                   to="/sign-in"
                   children="Sign In"
                   variant="outline"
-                  className="py-4 px-4 h-[50px] w-full justify-center"
+                  className="py-4 px-4 h-[50px] w-full justify-center border-[2px] border-[#1E2A7B] text-[#1E2A7B] 
+                 hover:from-[#0A0E29] text-[#5B6CD7] hover:[#1E2A7B]"
                 />
               </div>
             )}

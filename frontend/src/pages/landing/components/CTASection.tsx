@@ -17,7 +17,8 @@ export default function CTASection() {
               to="/sign-up"
               variant="solid"
               children="Join Our Community"
-              className="h-[62px] py-2 px-5"
+              className="h-[62px] py-2 px-5 bg-gradient-to-t from-[#0A0E29] to-[#1E2A7B] text-[#fafafa] 
+                                    hover:from-[#141C52] hover:to-[#5B6CD7]"
             />
           </div>
           <div>
