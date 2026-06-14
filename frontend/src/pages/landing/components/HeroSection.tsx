@@ -22,7 +22,11 @@ export default function HeroSection() {
         </div>
         <img src={star} alt="star" className="self-end hidden lg:block" />
         <div className="w-full max-w-[500px] lg:max-w-none">
-          <img src={illustration} alt="illustration image" className="w-full h-auto" />
+          <img
+            src={illustration}
+            alt="illustration image"
+            className="w-full h-auto"
+          />
         </div>
       </div>
     </section>

@@ -17,19 +17,13 @@ export default function CourseBox({
         <h3 className="font-bold text-lg mb-1">{subject.name}</h3>
         <p className="text-slate-600 text-sm mb-1">{subject.instructor}</p>
         <p className="text-slate-500 text-xs mb-1">{subject.year}</p>
-        <p className="text-slate-500 text-xs mb-4">{subject.lec}lec</p>
       </div>
-
-
-
-
       <ButtonLink
-                                              to="/sign-up"
-                                              children="Continue"
-                                              variant="solid"
-                                              className="py-2 px-5 h-[35px] w-fill mt-2 group-hover:from-[#141C52] group-hover:to-[#5B6CD7]"
-                                              onClick={() => navigate(`/courses/${subject._id}`)}
-                                            />
+        to={`/courses/${subject._id}`}
+        children="Continue"
+        variant="solid"
+        className="py-2 px-5 h-[35px] w-fill mt-2 group-hover:from-[#141C52] group-hover:to-[#5B6CD7]"
+      />
     </div>
   );
 }

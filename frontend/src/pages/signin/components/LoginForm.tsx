@@ -102,7 +102,7 @@ export default function LoginForm() {
         <button
           type="button"
           onClick={loginWithGoogle}
-          className="flex items-center justify-center gap-3 w-full h-14 border border-gray-300 rounded-lg font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+          className="flex items-center justify-center gap-3 w-full h-14 bg-linear-to-t from-[#0A0E29] to-[#1E2A7B] text-[#EAEDFA] hover:from-[#141C52] hover:to-[#5B6CD7] border border-gray-300 rounded-lg font-medium  "
         >
           {/* Google SVG Icon */}
           <svg
@@ -134,7 +134,7 @@ export default function LoginForm() {
         <button
           type="button"
           onClick={loginWithFacebook}
-          className="flex items-center justify-center gap-3 w-full h-14 border border-gray-300 rounded-lg font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+          className="flex items-center justify-center gap-3 w-full h-14 bg-linear-to-t from-[#0A0E29] to-[#1E2A7B] text-[#EAEDFA] hover:from-[#141C52] hover:to-[#5B6CD7] border border-gray-300 rounded-lg font-medium  "
         >
           {/* Facebook SVG Icon */}
           <svg

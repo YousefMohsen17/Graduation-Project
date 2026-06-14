@@ -5,7 +5,7 @@ import LoginForm from "./components/LoginForm";
 import WelcomeMessage from "./components/WelcomeMessage";
 import LoginLogo from "./components/LoginLogo";
 export default function SigninPage() {
-  const location = useLocation()
+  const location = useLocation();
   const hasShownToast = useRef(false);
   useEffect(() => {
     if (location.state?.showSuccessToast && !hasShownToast.current) {
