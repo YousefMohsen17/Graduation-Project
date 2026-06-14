@@ -1,5 +1,6 @@
 import { GraduationCap } from "lucide-react";
 
+<<<<<<< HEAD
 export default function WelcomeMessage() {
   return (
     <div className="p-4 ml-15 text-center mb-10">
@@ -21,6 +22,16 @@ export default function WelcomeMessage() {
           linguistic studies and technical literature.
         </p>
       </p>
+=======
+export default function WelcomeMessage() { 
+    return (
+<div className="p-4 ml-15 ms:ml-0 ms:p-0">
+  <div className="flex items-start gap-3 mb-2">
+    <GraduationCap className="mb-4" size={25} color="#1349EC" />
+    <div>
+    <p className="text-[22px] font-bold
+     text-[#141C52]">Academic Excellence</p>
+>>>>>>> 52977d928437e58f5968250ce747f4fd6c11ed4f
     </div>
   );
 }

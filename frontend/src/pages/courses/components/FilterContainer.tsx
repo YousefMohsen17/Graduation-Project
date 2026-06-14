@@ -7,17 +7,13 @@ export default function FilterContainer({ selectedLevel, setSelectedLevel }: { s
 
     return (
         <div className="flex justify-center mb-[80px]">
-            <div className="
-                        p-3 rounded-[24px]
-                        bg-white/30 backdrop-blur-md border border-white/60 shadow-xl
-                        flex gap-3 flex-wrap justify-center
-                    ">
+            <div className=" flex gap-3 flex-wrap justify-center">
                 {levels.map((level) => (
                     <GlassButton key={level} onClick={() => setSelectedLevel(level)}
-                        className={`
+                        className={`w-[120px] h-[40px] text-sm
 
                                      ${selectedLevel === level
-                                ? "bg-blue-600! text-blue-600! border-blue-500 shadow-md!"
+                                ? "bg-blue-600! text-white-600! border-[fafafa] shadow-md!"
                                 : ""
                             }
                                  `}

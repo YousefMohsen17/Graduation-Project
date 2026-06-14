@@ -48,7 +48,7 @@ export default function SubjectDetailsPage() {
         <h4 className="text-lg text-slate-600">{subject?.code}</h4>
       </div>
 
-      <div className="bg-[#CCD1F3] rounded-[24px] p-8 shadow-lg border border-white max-w-4xl mx-auto">
+      <div className="bg-gradient-to-t from-[#D6DAF5] to-[#fafafa] rounded-[24px] p-8 shadow-lg border border-white max-w-4xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <h3 className="text-xl font-semibold mb-4">Subject Information</h3>
@@ -82,7 +82,7 @@ export default function SubjectDetailsPage() {
           <h3 className="text-xl font-semibold mb-4">Resources</h3>
           <div className="flex justify-between gap-4">
             {subject?.driveLink && (
-              <GlassButton
+              <GlassButton className="px-4 py-2 rounded-[10px]"
                 onClick={() => {
                   window.open(subject.driveLink, "_blank");
                   mutate(subject._id);
@@ -94,7 +94,7 @@ export default function SubjectDetailsPage() {
             {coursesProgress?.find(
               (course: coursesProgress) => course.id === subject._id,
             ) && (
-              <GlassButton
+              <GlassButton className="px-4 py-2 rounded-[10px]"
                 onClick={() => {
                   mutateProgress({
                     courseId: subject._id,
@@ -103,7 +103,7 @@ export default function SubjectDetailsPage() {
                 }}
               >
                 {isCompleted(subject._id) ? "✅" : "Mark As Completed ✅"}
-              </GlassButton>
+              </GlassButton >
             )}
           </div>
         </div>
