@@ -1,12 +1,16 @@
+import { useNavigate } from "react-router";
 import subjectImage from "../../../assets/subject-image.jpg"
 import { SkeletonCard } from "../../../components/Skeleton";
 import ProgressBarCard from "../../../components/ProgressBar";
-import ButtonLink from "../../../components/ButtonLink";
+
 import { useSubjects } from "../../../lib/queries";
 import type { Subject } from "@/types/types";
 
 export default function CourseBox() {
+    const navigate = useNavigate();
     const { data, isLoading, error } = useSubjects()
+
+    
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-20">
             {data?.data?.map((subject: Subject) => (
@@ -42,12 +46,22 @@ export default function CourseBox() {
                                     </span>
                                 </span>
                             </div>
-                            <ButtonLink
-                                        to="/sign-up"
-                                        children="Continue"
-                                        variant="solid"
-                                        className="py-2 px-5 h-[35px] w-fill mt-2 group-hover:from-[#141C52] group-hover:to-[#5B6CD7]"
-                                      />
+                                  <button
+        onClick={() => navigate(`/courses/${subject._id}`)}
+        className="
+                                    w-full mt-2 h-[44px] 
+                                    flex items-center justify-center
+                                    rounded-[25px]
+                                    bg-gradient-to-t from-[#0A0E29] to-[#1E2A7B] text-[#fafafa] 
+                                    hover:from-[#141C52] hover:to-[#5B6CD7]
+                                    backdrop-blur-2xl
+                                    shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]
+                                     font-medium transition-all active:scale-95
+                                    border border-white hover:brightness-105
+                                "
+      >
+        CONTINUE
+      </button>
                         </div>
                     )}
                 </>
