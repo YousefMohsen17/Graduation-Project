@@ -1,9 +1,7 @@
-import GlassButton from "@/components/GlassButton";
+import ButtonLink from "@/components/ButtonLink";
 import { useStudentStats } from "@/lib/queries";
 import type { coursesProgress } from "@/types/types";
-import { useNavigate } from "react-router";
 export default function CourseProgress() {
-  const navigate = useNavigate();
   const { data: stats } = useStudentStats();
   const { coursesProgress } = stats?.data || {};
 
@@ -34,9 +32,12 @@ export default function CourseProgress() {
                   />
                 </div>
               </div>
-              <GlassButton onClick={() => navigate(`/courses/${course.id}`)}>
-                Continue
-              </GlassButton>
+              <ButtonLink
+                to={`/courses/${course.id}`}
+                children="Continue"
+                variant="solid"
+                className="py-2 px-5 h-[35px] w-fill mt-2 group-hover:from-[#141C52] group-hover:to-[#5B6CD7]"
+              />
             </div>
           );
         })}
