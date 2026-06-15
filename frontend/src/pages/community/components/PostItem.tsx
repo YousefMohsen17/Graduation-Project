@@ -7,13 +7,13 @@ import {
   Trash2,
   X,
 } from "lucide-react";
-import type { Post } from "@/types/types";
+import type { Post, User } from "@/types/types";
 import { useLikePost, useCommentPost, useDeletePost } from "@/lib/queries";
 import InputGlass from "../../../components/InputGlass";
 import GlassButton from "../../../components/GlassButton";
 interface PostItemProps {
   post: Post;
-  currentUser?: any;
+  currentUser?: User;
 }
 
 export default function PostItem({ post, currentUser }: PostItemProps) {
@@ -23,11 +23,8 @@ export default function PostItem({ post, currentUser }: PostItemProps) {
   const [showComments, setShowComments] = useState(false);
   const [commentValue, setCommentValue] = useState("");
   const [showFullImage, setShowFullImage] = useState(false);
-
-  const isLiked = post.likes.some(
-    (like) => like.user === currentUser?.data?._id,
-  );
-  const isOwner = post.user._id === currentUser?.data?._id;
+  const isLiked = post.likes.some((like) => like.user === currentUser?._id);
+  const isOwner = post.user._id === currentUser?._id;
 
   function handleLike() {
     likePost(post._id);
@@ -41,26 +38,28 @@ export default function PostItem({ post, currentUser }: PostItemProps) {
 
   function handleCommentSubmit() {
     if (!commentValue.trim()) return;
-    commentPost(
-      {
-        id: post._id,
-        commentContent: {
-          text: commentValue,
-          name: currentUser?.data?.name,
-          user: currentUser?.data._id,
-          content: commentValue,
+    if (currentUser) {
+      commentPost(
+        {
+          id: post._id,
+          commentContent: {
+            text: commentValue,
+            name: currentUser?.name,
+            user: currentUser?._id,
+            content: commentValue,
+          },
         },
-      },
-      {
-        onSuccess: () => {
-          setCommentValue("");
+        {
+          onSuccess: () => {
+            setCommentValue("");
+          },
         },
-      },
-    );
+      );
+    }
   }
 
   return (
-    <div className="py-4 px-5 rounded-[8px] border border-white bg-[#EAEDFA] mb-[40px]">
+    <div className="py-4 px-5 rounded-[8px] border border-white bg-[#EAEDFA] mb-[40px] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] backdrop-blur-[30px]">
       <div className="flex items-center mb-[24px] gap-5 justify-between">
         <div className="flex items-center gap-5">
           <CircleUserRound className="w-[48px] h-[48px]" />
@@ -124,7 +123,7 @@ export default function PostItem({ post, currentUser }: PostItemProps) {
             <GlassButton
               onClick={handleCommentSubmit}
               disabled={isCommenting || !commentValue.trim()}
-              className="bg-blue-600 hover:bg-blue-700 text-white !py-2 !px-4 h-10 flex items-center justify-center"
+              className="bg-blue-600 hover:bg-blue-700 text-white py-2! px-4! h-10 flex items-center justify-center"
             >
               <Send size={16} />
             </GlassButton>

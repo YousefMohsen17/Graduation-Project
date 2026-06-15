@@ -61,7 +61,6 @@ export interface Subject {
   instructor: string;
   createdAt: string;
   __v: number;
-  
 }
 
 export interface SubjectsResponse {
@@ -87,4 +86,15 @@ export interface coursesProgress {
   lastAccessed: string;
   code: string;
   completed: boolean;
+}
+export interface User {
+  academicYear: string;
+  createdAt: string;
+  department: string;
+  email: string;
+  name: string;
+  role: string;
+  _id: string;
+  __v: number;
+  studyStats: StudyStats;
 }

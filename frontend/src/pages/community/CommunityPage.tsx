@@ -56,8 +56,8 @@ export default function CommunityPage() {
   return (
     <div className="container mx-auto px-4">
       <h3 className="mb-8 md:mb-[63px]">Recent Activity</h3>
-      <div className="border border-white rounded-2xl py-4 px-5 bg-[#EAEDFA] mb-[60px]">
-        <div className="flex items-center mb-4 justify-between gap-2">
+      <div className="border border-white rounded-2xl py-4 px-5 bg-[#EAEDFA] mb-[60px] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] backdrop-blur-[30px]">
+        <div className="flex items-center mb-4 justify-between gap-2 ">
           <div>
             <CircleUserRound className="w-[48px] h-[48px]" />
           </div>
@@ -116,7 +116,7 @@ export default function CommunityPage() {
       <div>
         {isLoading && <div className="text-center">Loading...</div>}
         {posts?.data?.map((post: Post) => (
-          <PostItem key={post._id} post={post} currentUser={user} />
+          <PostItem key={post._id} post={post} currentUser={user.data} />
         ))}
       </div>
     </div>
