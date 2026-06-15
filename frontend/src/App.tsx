@@ -7,6 +7,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
 import LoadingPage from "./components/LoadingPage";
 import StudyTimerProvider from "./providers/studyTimerProvider";
+import AiPage from "./pages/AI-Assistant/AiPage";
 
 // Lazy load all pages
 const LandingPage = lazy(() => import("./pages/landing/LandingPage"));
@@ -61,6 +62,10 @@ function App() {
               element: <SubjectDetailsPage />,
             },
             {
+              path: "/ai-assistant",
+              element: <AiPage />,
+            },
+            {
               path: "/community",
               element: <CommunityPage />,
             },
@@ -72,6 +77,7 @@ function App() {
               path: "/progress",
               element: <ProgressPage />,
             },
+            
           ],
         },
       ],

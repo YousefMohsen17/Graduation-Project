@@ -49,6 +49,13 @@ export default function Header() {
                     Courses
                   </li>
                 </Link>
+                <Link to="/ai-assistant">
+                  <li
+                    className={`hover:text-[#0a0e29] transition-colors ${isActive("/ai-assistant")}`}
+                  >
+                    AI Assistant
+                  </li>
+                </Link>
                 <Link to="/progress">
                   <li
                     className={`hover:text-[#0a0e29] transition-colors ${isActive("/progress")}`}
@@ -63,13 +70,7 @@ export default function Header() {
                     Community
                   </li>
                 </Link>
-                <Link to="/about">
-                  <li
-                    className={`hover:text-[#0a0e29] transition-colors ${isActive("/about")}`}
-                  >
-                    About
-                  </li>
-                </Link>
+                
               </>
             ) : null}
           </ul>
@@ -145,15 +146,17 @@ export default function Header() {
                     <Link to="/courses" onClick={() => setIsMenuOpen(false)}>
                       <li className={isActive("/courses")}>Courses</li>
                     </Link>
+                    <Link to="/ai-assistant" onClick={() => setIsMenuOpen(false)}>
+                      <li className={isActive("/ai-assistant")}>AI Assistant</li>
+                    </Link>
+                    
                     <Link to="/progress" onClick={() => setIsMenuOpen(false)}>
                       <li className={isActive("/progress")}>Progress</li>
                     </Link>
                     <Link to="/community" onClick={() => setIsMenuOpen(false)}>
                       <li className={isActive("/community")}>Community</li>
                     </Link>
-                    <Link to="/about" onClick={() => setIsMenuOpen(false)}>
-                      <li className={isActive("/about")}>About</li>
-                    </Link>
+                    
                     <button
                       onClick={() => {
                         setShowLogoutConfirm(true);

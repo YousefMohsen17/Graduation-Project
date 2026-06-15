@@ -194,3 +194,13 @@ export async function updateCourseProgress({
   });
   return res.data;
 }
+
+export async function askAI(question: string) {
+  try {
+    const response = await axiosInstance.post("/ai/chat", { question });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
