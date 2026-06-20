@@ -23,22 +23,27 @@ if (!fs.existsSync(uploadDir)) {
 const app = express();
 app.set("trust proxy", 1); // Trust first proxy (Railway)
 
-// CORS Configuration - MUST BE FIRST
-const corsOptions = {
-  origin: [
-    "https://graduation-project-p8w4.vercel.app",
-    "https://graduation-project-p8w4-im7a2kmyc-yousefs-projects-5930ff64.vercel.app",
-    "http://localhost:5173",
-    process.env.CLIENT_URL,
-  ].filter(Boolean),
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
-  allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
-  optionsSuccessStatus: 200,
-};
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      const allowedOrigins = [
+        "http://localhost:5173",
+        "https://graduation-project-p8w4.vercel.app", // main domain
+      ];
 
-// Apply CORS
-app.use(cors(corsOptions));
+      if (
+        !origin ||
+        allowedOrigins.includes(origin) ||
+        origin.endsWith(".vercel.app") // ✅ allows ALL vercel preview URLs
+      ) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  }),
+);
 
 // Handle preflight requests explicitly
 app.options("/^\/.*$/", cors(corsOptions));
