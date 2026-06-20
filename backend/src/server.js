@@ -28,13 +28,13 @@ app.use(
     origin: (origin, callback) => {
       const allowedOrigins = [
         "http://localhost:5173",
-        "https://graduation-project-p8w4.vercel.app", // main domain
+        "https://graduation-project-p8w4.vercel.app",
       ];
 
       if (
         !origin ||
         allowedOrigins.includes(origin) ||
-        origin.endsWith(".vercel.app") // ✅ allows ALL vercel preview URLs
+        origin.endsWith(".vercel.app")
       ) {
         callback(null, true);
       } else {
@@ -45,8 +45,8 @@ app.use(
   }),
 );
 
-// Handle preflight requests explicitly
-app.options("/^\/.*$/", cors(corsOptions));
+// ✅ handle preflight requests correctly
+app.options("*", cors());
 
 // Body parser
 app.use(express.json());
