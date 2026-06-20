@@ -12,12 +12,11 @@ const features = [
       />
     ),
     title: "Summarize Lessons",
-    description:
-      "Instantly condense long lectures into concise study notes.",
+    description: "Instantly condense long lectures into concise study notes.",
   },
   {
     bordered: true,
-    icon: <HelpCircle strokeWidth={2} size={22}  />,
+    icon: <HelpCircle strokeWidth={2} size={22} />,
     title: "Generate Questions",
     description:
       "Challenge yourself with AI-generated mock exams based on your syllabus.",
@@ -55,12 +54,14 @@ function AiSection() {
     <section className="box-border w-full px-4 py-12 text-left sm:px-8 sm:py-16 lg:py-20">
       <div className="mx-auto max-w-6xl">
         <div className="text-center mb-10 lg:mb-20 px-4">
-        <h2 className="text-2xl lg:text-[31px] font-bold mb-4 lg:mb-8">AI-Powered Assistant</h2>
-        <p className="text-[#141C52] max-w-[748px] mx-auto text-base lg:text-lg text-[#141C52]">
-          A smart assistant designed to help CCE students study more
+          <h2 className="text-2xl lg:text-[31px] font-bold mb-4 lg:mb-8">
+            AI-Powered Assistant
+          </h2>
+          <p className="text-[#141C52] max-w-[748px] mx-auto text-base lg:text-lg">
+            A smart assistant designed to help CCE students study more
             efficiently and build professional CVs.
-        </p>
-      </div>
+          </p>
+        </div>
 
         <div className="grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-16">
           <ul className="flex flex-col gap-8 lg:gap-10">
@@ -93,7 +94,7 @@ function AiSection() {
           </ul>
 
           <div
-            className="relative overflow-hidden rounded-2xl border border-indigo-100/80 bg-gradient-to-b from-white via-indigo to-[#ADB5EB] shadow-xl shadow-indigo-200/40"
+            className="relative overflow-hidden rounded-2xl border border-indigo-100/80 bg-linear-to-b from-white via-indigo to-[#ADB5EB] shadow-xl shadow-indigo-200/40"
             role="img"
             aria-label="Engipidia AI Assistant chat preview"
           >
@@ -151,7 +152,7 @@ function AiSection() {
           {footerCards.map((card) => (
             <div
               key={card.title}
-              className="rounded-xl py-4 px-2 border-[1px] border-gradient-to-t from-[#D6DAF5] to-[#FAFAFA] bg-gradient-to-t from-[#D6DAF5] to-[#FFFFFF] text-center max-w-[305px] max-h-[84px] hover:from-[#8490E1] hover:to-[#FDFDFD] drop-shadow-xl"
+              className="rounded-xl py-4 px-2 border border-gradient-to-t from-[#D6DAF5]  bg-linear-to-t  to-[#FFFFFF] text-center max-w-[305px] max-h-[84px] hover:from-[#8490E1] hover:to-[#FDFDFD] drop-shadow-xl"
             >
               <p className="font-sans text-sm font-bold text-slate-900">
                 {card.title}
@@ -166,33 +167,3 @@ function AiSection() {
 }
 
 export default AiSection;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -17,12 +17,16 @@ export default function CTASection() {
               to="/sign-up"
               variant="solid"
               children="Join Our Community"
-              className="h-[62px] py-2 px-5 bg-gradient-to-t from-[#0A0E29] to-[#1E2A7B] text-[#fafafa] 
+              className="h-[62px] py-2 px-5 bg-linear-to-t from-[#0A0E29] to-[#1E2A7B] text-[#fafafa] 
                                     hover:from-[#141C52] hover:to-[#5B6CD7]"
             />
           </div>
           <div>
-            <img src={studentStudying} alt="student Studying illustration" className="w-full max-w-[300px] lg:max-w-none" />
+            <img
+              src={studentStudying}
+              alt="student Studying illustration"
+              className="w-full max-w-[300px] lg:max-w-none"
+            />
           </div>
         </div>
       </div>

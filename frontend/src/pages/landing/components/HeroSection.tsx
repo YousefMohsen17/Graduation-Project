@@ -17,7 +17,7 @@ export default function HeroSection() {
             to="/sign-up"
             children="Begin Your Journey"
             variant="solid"
-            className="py-2 px-5 h-[62px] w-fit bg-gradient-to-t from-[#0A0E29] to-[#1E2A7B] text-[#fafafa] 
+            className="py-2 px-5 h-[62px] w-fit bg-linear-to-t from-[#0A0E29] to-[#1E2A7B] text-[#fafafa] 
                                     hover:from-[#141C52] hover:to-[#5B6CD7]"
           />
         </div>
