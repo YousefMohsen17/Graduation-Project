@@ -24,7 +24,7 @@ export const AiChatProvider = ({ children }: { children: React.ReactNode }) => {
     </AiChatContext.Provider>
   );
 };
-
+// eslint-disable-next-line react-refresh/only-export-components
 export const useAiChat = () => {
   const context = useContext(AiChatContext);
   if (!context) throw new Error("useAiChat must be used within AiChatProvider");
