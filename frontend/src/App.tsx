@@ -14,6 +14,7 @@ import StudyTimerProvider from "./providers/studyTimerProvider";
 import AiPage from "./pages/AI-Assistant/AiPage";
 import { AiChatProvider } from "./context/AiChatContext";
 import { checkAuth } from "./lib/api";
+import PrivacyPage from "./pages/privacy/PrivacyPage";
 
 // Lazy load all pages
 const LandingPage = lazy(() => import("./pages/landing/LandingPage"));
@@ -65,6 +66,7 @@ const router = createBrowserRouter([
       { path: "/sign-in", element: <SigninPage /> },
     ],
   },
+  { path: "/privacy", element: <PrivacyPage /> },
 ]);
 
 // ✅ AuthLoader inside QueryClientProvider
