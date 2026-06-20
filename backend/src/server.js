@@ -27,6 +27,7 @@ app.set("trust proxy", 1); // Trust first proxy (Railway)
 const corsOptions = {
   origin: [
     "https://graduation-project-p8w4.vercel.app",
+    "https://graduation-project-p8w4-im7a2kmyc-yousefs-projects-5930ff64.vercel.app",
     "http://localhost:5173",
     process.env.CLIENT_URL,
   ].filter(Boolean),
