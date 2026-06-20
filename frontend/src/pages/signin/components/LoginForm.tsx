@@ -131,29 +131,6 @@ export default function LoginForm() {
           Continue with Google
         </button>
 
-        <button
-          type="button"
-          onClick={loginWithFacebook}
-          className="flex items-center justify-center gap-3 w-full h-14 bg-linear-to-t from-[#0A0E29] to-[#1E2A7B] text-[#EAEDFA] hover:from-[#141C52] hover:to-[#5B6CD7] border border-gray-300 rounded-lg font-medium  "
-        >
-          {/* Facebook SVG Icon */}
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 48 48"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill="#1877F2"
-              d="M48 24C48 10.745 37.255 0 24 0S0 10.745 0 24c0 11.979 8.776 21.908 20.25 23.708V30.937h-6.094V24H20.25v-5.269c0-6.011 3.579-9.331 9.057-9.331 2.624 0 5.37.469 5.37.469v5.906h-3.026c-2.979 0-3.907 1.85-3.907 3.748V24h6.656l-1.063 6.937H27.75v16.771C39.224 45.908 48 35.979 48 24z"
-            />
-            <path
-              fill="#fff"
-              d="M33.337 30.937 34.4 24h-6.656v-4.477c0-1.898.928-3.748 3.907-3.748h3.026V9.869s-2.746-.469-5.37-.469c-5.478 0-9.057 3.32-9.057 9.331V24h-6.094v6.937H20.25v16.771a24.15 24.15 0 0 0 7.5 0V30.937h5.587z"
-            />
-          </svg>
-          Continue with Facebook
-        </button>
       </div>
 
       <h4 className="text-xl mt-[60px] mb-8 font-bold text-center">
