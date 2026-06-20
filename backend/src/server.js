@@ -71,6 +71,7 @@ app.use("/api/lectures", require("./routes/lectures"));
 app.use("/api/subjects", require("./routes/subjects"));
 app.use("/api/community", require("./routes/community"));
 app.use("/api/student", require("./routes/student"));
+app.use("/api/ai", require("./routes/ai"));
 
 // Static files
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
