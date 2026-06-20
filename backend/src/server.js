@@ -45,9 +45,7 @@ app.use(
   }),
 );
 
-// ✅ handle preflight requests correctly
-app.options("*", cors());
-
+app.options(/.*/, cors());
 // Body parser
 app.use(express.json());
 app.use(cookieParser());
