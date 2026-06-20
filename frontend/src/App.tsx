@@ -8,6 +8,7 @@ import PublicRoute from "./components/PublicRoute";
 import LoadingPage from "./components/LoadingPage";
 import StudyTimerProvider from "./providers/studyTimerProvider";
 import AiPage from "./pages/AI-Assistant/AiPage";
+import { AiChatProvider } from "./context/AiChatContext";
 
 // Lazy load all pages
 const LandingPage = lazy(() => import("./pages/landing/LandingPage"));
@@ -77,7 +78,6 @@ function App() {
               path: "/progress",
               element: <ProgressPage />,
             },
-            
           ],
         },
       ],
@@ -96,14 +96,15 @@ function App() {
       ],
     },
   ]);
-
   return (
     <QueryClientProvider client={queryClient}>
-      <StudyTimerProvider />
-      <Toaster />
-      <Suspense fallback={<LoadingPage />}>
-        <RouterProvider router={router} />
-      </Suspense>
+      <AiChatProvider>
+        <StudyTimerProvider />
+        <Toaster />
+        <Suspense fallback={<LoadingPage />}>
+          <RouterProvider router={router} />
+        </Suspense>
+      </AiChatProvider>
     </QueryClientProvider>
   );
 }

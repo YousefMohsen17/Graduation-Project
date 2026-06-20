@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.1.17",
     "@tanstack/react-query": "^5.90.18",
     "axios": "^1.13.2",
@@ -19,9 +20,11 @@
     "embla-carousel-react": "^8.6.0",
     "firebase": "^12.12.1",
     "lucide-react": "^0.556.0",
+    "pdfjs-dist": "^6.0.227",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-hot-toast": "^2.6.0",
+    "react-markdown": "^10.1.0",
     "react-router": "^7.10.1",
     "recharts": "^3.7.0",
     "tailwind-merge": "^3.4.0",

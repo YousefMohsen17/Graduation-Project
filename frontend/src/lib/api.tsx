@@ -195,12 +195,18 @@ export async function updateCourseProgress({
   return res.data;
 }
 
-export async function askAI(question: string) {
-  try {
-    const response = await axiosInstance.post("/ai/chat", { question });
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
-}
+export const askAI = async (payload: string | FormData) => {
+  const isFormData = payload instanceof FormData;
+
+  const response = await axiosInstance.post(
+    "/ai/chat",
+    isFormData ? payload : { question: payload },
+    {
+      headers: {
+        "Content-Type": isFormData ? "multipart/form-data" : "application/json",
+      },
+    },
+  );
+
+  return response.data;
+};

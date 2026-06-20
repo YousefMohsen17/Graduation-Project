@@ -10,4 +10,10 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  optimizeDeps: {
+    include: ["pdfjs-dist"], // ✅ pre-bundle pdfjs
+  },
+  worker: {
+    format: "es", // ✅ ES module worker support
+  },
 });
